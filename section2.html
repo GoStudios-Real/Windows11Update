@@ -1,5 +1,0 @@
-<div class="card">
-<h3>Option 2: Download via PowerShell</h3>
-<pre><code>Invoke-WebRequest -Uri "https://github.com/GoStudios-Real/Windows11Update/releases/latest/download/Windows11FastLight-Package.zip" -OutFile "C:\temp\update.zip"
-Expand-Archive "C:\temp\update.zip" -DestinationPath "C:\temp\update"
-powershell -ExecutionPolicy Bypass -File "C:\temp\update\Windows11FastLight-Setup.ps1" -Silent
