@@ -7,59 +7,72 @@
 <meta name="description" content="Windows 11 Update is a free optimization package that makes Windows 11 faster, quicker and lighter. Version 26H2.3 with 12 reversible optimizations.">
 <style>
 :root{
-  --accent:#0067c0;
-  --accent-2:#0078d4;
-  --accent-dark:#004578;
-  --ink:#1b1b1f;
-  --muted:#5c5c66;
-  --line:#e6e6eb;
-  --bg:#f7f7fa;
+  --accent:#075fc4;
+  --accent-2:#1684e8;
+  --accent-dark:#064a98;
+  --ink:#142236;
+  --muted:#52647a;
+  --line:#dce5ef;
+  --bg:#f3f7fc;
   --card:#ffffff;
-  --good:#0f7b3f;
-  --radius:14px;
-  --shadow:0 2px 10px rgba(16,24,40,.06);
-  --shadow-lg:0 18px 48px rgba(16,24,40,.16);
+  --good:#147446;
+  --radius:18px;
+  --shadow:0 4px 16px rgba(0,0,0,.06);
+  --shadow-lg:0 24px 64px rgba(0,0,0,.18);
 }
 *{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth;scroll-padding-top:88px}
+html{scroll-behavior:smooth;scroll-padding-top:92px}
 body{
-  font-family:'Segoe UI','Segoe UI Variable Text',system-ui,-apple-system,sans-serif;
-  background:var(--bg);color:var(--ink);line-height:1.6;
+  font-family:'Segoe UI Variable Text','Segoe UI',system-ui,-apple-system,sans-serif;
+  background:
+    radial-gradient(ellipse at 82% 4%,rgba(22,132,232,.06),transparent 30rem),
+    var(--bg);
+  color:var(--ink);line-height:1.65;
   -webkit-font-smoothing:antialiased;
 }
-a{color:var(--accent)}
+a{color:var(--accent);text-underline-offset:3px}
 img,svg{display:block}
+button,input{font:inherit}
+button:focus-visible,a:focus-visible,input:focus-visible{
+  outline:3px solid #65b5ff;outline-offset:3px;
+}
+.skip-link{
+  position:fixed;top:10px;left:10px;z-index:1000;transform:translateY(-160%);
+  padding:10px 14px;border-radius:9px;background:#fff;color:var(--accent-dark);
+  box-shadow:var(--shadow-lg);font-weight:700;
+}
+.skip-link:focus{transform:translateY(0)}
 
 /* ---------- Top bar ---------- */
 .topbar{
   position:sticky;top:0;z-index:500;
-  background:rgba(255,255,255,.86);
-  backdrop-filter:saturate(180%) blur(14px);
-  -webkit-backdrop-filter:saturate(180%) blur(14px);
+  background:rgba(255,255,255,.92);
+  backdrop-filter:saturate(160%) blur(18px);
+  -webkit-backdrop-filter:saturate(160%) blur(18px);
   border-bottom:1px solid var(--line);
 }
 .topbar-inner{
-  max-width:1240px;margin:0 auto;padding:12px 20px;
-  display:flex;align-items:center;gap:18px;
+  max-width:1360px;min-height:72px;margin:0 auto;padding:10px 28px;
+  display:flex;align-items:center;gap:24px;
 }
-.brand{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--ink);font-weight:600;font-size:15px;letter-spacing:-.01em}
-.brand-mark{width:30px;height:30px;border-radius:8px;background:linear-gradient(135deg,#0078d4,#00a4ef);display:grid;place-items:center;color:#fff;box-shadow:0 4px 12px rgba(0,120,212,.35)}
+.brand{display:flex;align-items:center;gap:11px;text-decoration:none;color:var(--ink);font-weight:700;font-size:15px;letter-spacing:-.02em}
+.brand-mark{width:34px;height:34px;border-radius:10px;background:linear-gradient(145deg,#1684e8,#075fc4);display:grid;place-items:center;color:#fff;box-shadow:0 4px 10px rgba(0,0,0,.16)}
 .topbar-links{display:flex;gap:6px;margin-left:auto;align-items:center}
 .topbar-links a{
-  color:var(--muted);text-decoration:none;font-size:13.5px;font-weight:500;
-  padding:8px 12px;border-radius:8px;transition:.18s;
+  color:var(--muted);text-decoration:none;font-size:13px;font-weight:600;
+  padding:9px 12px;border-radius:9px;transition:background .18s,color .18s;
 }
-.topbar-links a:hover{background:#eef4fb;color:var(--accent)}
+.topbar-links a:hover{background:#edf5ff;color:var(--accent)}
 .topbar-links a.ghost{border:1px solid var(--line)}
 .topbar-cta{
   background:var(--accent)!important;color:#fff!important;
-  padding:9px 18px!important;border-radius:999px!important;font-weight:600!important;
-  box-shadow:0 4px 14px rgba(0,103,192,.28);
+  padding:10px 19px!important;border-radius:999px!important;font-weight:700!important;
+  box-shadow:0 5px 14px rgba(0,0,0,.16);
 }
 .topbar-cta:hover{background:var(--accent-dark)!important;transform:translateY(-1px)}
 .hamburger{
   display:none;margin-left:auto;background:none;border:1px solid var(--line);
-  border-radius:8px;width:40px;height:38px;cursor:pointer;align-items:center;justify-content:center;
+  border-radius:10px;width:44px;height:42px;cursor:pointer;align-items:center;justify-content:center;
 }
 .hamburger svg{stroke:var(--ink)}
 @media(max-width:1040px){
@@ -68,87 +81,95 @@ img,svg{display:block}
 }
 
 /* ---------- Layout ---------- */
-.layout{display:flex;max-width:1240px;margin:0 auto;align-items:flex-start}
+.layout{display:flex;max-width:1360px;margin:0 auto;padding:0 28px;align-items:flex-start}
 .sidebar{
-  width:250px;flex:0 0 250px;position:sticky;top:73px;
-  padding:26px 14px 26px 0;height:calc(100vh - 73px);overflow-y:auto;
+  width:238px;flex:0 0 238px;position:sticky;top:72px;
+  padding:30px 18px 30px 0;height:calc(100vh - 72px);overflow-y:auto;
 }
-.sidebar-group{margin-bottom:22px}
-.sidebar-label{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.09em;color:#9a9aa6;padding:0 12px;margin-bottom:8px}
+.sidebar-group{margin-bottom:26px}
+.sidebar-label{font-size:10px;font-weight:800;text-transform:uppercase;letter-spacing:.13em;color:#52647a;padding:0 12px;margin-bottom:9px}
 .sidebar-nav{list-style:none;display:flex;flex-direction:column;gap:2px}
 .sidebar-nav a{
   display:flex;align-items:center;gap:10px;color:var(--muted);text-decoration:none;
-  padding:9px 12px;border-radius:9px;font-size:13.5px;font-weight:500;transition:.16s;
+  padding:10px 12px;border-radius:10px;font-size:13px;font-weight:600;transition:.16s;
 }
 .sidebar-nav a svg{width:16px;height:16px;stroke:currentColor;fill:none;stroke-width:1.7;flex:0 0 16px;opacity:.85}
 .sidebar-nav a:hover{background:#fff;color:var(--ink);box-shadow:var(--shadow)}
-.sidebar-nav a.active{background:#e8f2fd;color:var(--accent);font-weight:600}
+.sidebar-nav a.active{background:#e7f2ff;color:var(--accent);font-weight:700}
 .sidebar-card{
-  background:linear-gradient(160deg,#0b3b66,#0067c0);color:#fff;
-  border-radius:12px;padding:16px;font-size:12.5px;box-shadow:var(--shadow);
+  background:linear-gradient(145deg,#102b4b,#075fc4);color:#fff;
+  border-radius:14px;padding:17px;font-size:12.5px;box-shadow:0 12px 26px rgba(0,0,0,.18);
 }
 .sidebar-card strong{display:block;font-size:13px;margin-bottom:4px}
-.sidebar-card .dot{display:inline-block;width:7px;height:7px;border-radius:50%;background:#4ade80;margin-right:6px;box-shadow:0 0 0 3px rgba(74,222,128,.25)}
-.sidebar-card p{color:rgba(255,255,255,.78);margin:6px 0 0}
-.content{flex:1;min-width:0;padding:0 0 0 28px}
+.sidebar-card .dot{display:inline-block;width:7px;height:7px;border-radius:50%;background:#4ade80;margin-right:6px}
+.sidebar-card p{color:#e7f2ff;margin:6px 0 0}
+.content{flex:1;min-width:0;padding:0 0 0 24px}
+.menu-scrim{display:none}
 @media(max-width:1040px){
   .sidebar{
-    position:fixed;left:0;top:73px;background:var(--bg);z-index:400;
-    transform:translateX(-102%);transition:transform .25s ease;box-shadow:var(--shadow-lg);
-    padding-left:14px;width:280px;flex-basis:280px;
+    position:fixed;left:0;top:72px;background:#f7faff;z-index:590;
+    transform:translateX(-105%);visibility:hidden;transition:transform .24s ease,visibility 0s linear .24s;box-shadow:var(--shadow-lg);
+    padding:24px 18px 30px;width:296px;max-width:calc(100vw - 42px);height:calc(100dvh - 72px);
   }
-  .sidebar.open{transform:translateX(0)}
+  .sidebar.open{transform:translateX(0);visibility:visible;transition:transform .24s ease}
   .content{padding-left:0}
+  .menu-scrim{
+    position:fixed;inset:72px 0 0;z-index:580;display:block;border:0;background:rgba(14,32,53,.28);
+    opacity:0;visibility:hidden;transition:opacity .2s,visibility .2s;
+  }
+  .menu-scrim.open{opacity:1;visibility:visible}
+  .layout{padding-inline:24px}
 }
 
 /* ---------- Hero ---------- */
 .hero{
-  margin:28px 0 0;border-radius:22px;overflow:hidden;position:relative;
-  background:radial-gradient(1100px 500px at 15% -10%,#2f9cf4 0%,transparent 60%),
-             linear-gradient(135deg,#0067c0 0%,#0059a8 45%,#003f78 100%);
-  color:#fff;padding:56px 48px 44px;box-shadow:var(--shadow-lg);
+  margin:28px 0 0;border-radius:26px;overflow:hidden;position:relative;
+  background:
+    radial-gradient(ellipse at 90% 15%,rgba(57,166,255,.2),transparent 33%),
+    radial-gradient(ellipse at 5% 110%,rgba(32,111,203,.45),transparent 42%),
+    linear-gradient(125deg,#0c2747 0%,#064c91 54%,#075fc4 100%);
+  color:#fff;padding:62px 52px 50px;box-shadow:0 28px 70px rgba(0,0,0,.22);
 }
 .hero::after{
   content:"";position:absolute;inset:0;pointer-events:none;
-  background-image:radial-gradient(rgba(255,255,255,.14) 1px,transparent 1px);
-  background-size:26px 26px;opacity:.35;
+  background:linear-gradient(115deg,rgba(255,255,255,.045),transparent 46%);
 }
-.hero-inner{position:relative;z-index:2;display:grid;grid-template-columns:1.15fr .85fr;gap:40px;align-items:center}
+.hero-inner{position:relative;z-index:2;display:grid;grid-template-columns:1.08fr .92fr;gap:48px;align-items:center}
 .pill{
   display:inline-flex;align-items:center;gap:8px;font-size:12.5px;font-weight:600;
-  background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.26);
+  background:rgba(0,0,0,.18);border:1px solid rgba(255,255,255,.24);
   padding:6px 14px;border-radius:999px;margin-bottom:18px;letter-spacing:.01em;
 }
-.pill .dot{width:7px;height:7px;border-radius:50%;background:#4ade80;box-shadow:0 0 0 3px rgba(74,222,128,.3)}
-.hero h1{font-size:46px;line-height:1.08;font-weight:650;letter-spacing:-.025em;margin-bottom:16px}
-.hero h1 span{display:block;font-weight:400;font-size:22px;letter-spacing:-.01em;opacity:.88;margin-top:10px}
-.hero p.lede{font-size:16.5px;color:rgba(255,255,255,.86);max-width:520px;margin-bottom:26px}
+.pill .dot{width:7px;height:7px;border-radius:50%;background:#4ade80}
+.hero h1{font-size:clamp(42px,4.2vw,58px);line-height:1.03;font-weight:700;letter-spacing:-.035em;margin-bottom:18px}
+.hero h1 span{display:block;font-weight:400;font-size:22px;letter-spacing:-.01em;margin-top:10px}
+.hero p.lede{font-size:16px;color:#fff;max-width:520px;margin-bottom:28px}
 .hero-actions{display:flex;gap:12px;flex-wrap:wrap;align-items:center}
 .btn{
   display:inline-flex;align-items:center;gap:9px;text-decoration:none;font-weight:600;
-  font-size:15px;padding:13px 26px;border-radius:999px;border:none;cursor:pointer;
+  font-size:14px;padding:13px 21px;border-radius:999px;border:none;cursor:pointer;
   transition:transform .18s,box-shadow .18s,background .18s;
 }
 .btn svg{width:17px;height:17px}
 .btn-primary{background:#fff;color:var(--accent-dark);box-shadow:0 8px 22px rgba(0,0,0,.22)}
 .btn-primary:hover{transform:translateY(-2px);box-shadow:0 12px 28px rgba(0,0,0,.28)}
-.btn-ghost{background:rgba(255,255,255,.1);color:#fff;border:1px solid rgba(255,255,255,.4)}
-.btn-ghost:hover{background:rgba(255,255,255,.18)}
-.hero-note{font-size:12.5px;color:rgba(255,255,255,.65);margin-top:16px}
+.btn-ghost{background:rgba(0,0,0,.12);color:#fff;border:1px solid rgba(255,255,255,.38)}
+.btn-ghost:hover{background:rgba(0,0,0,.22)}
+.hero-note{font-size:12px;color:#fff;margin-top:17px}
 
 /* Hero window mock */
 .window{
-  border-radius:14px;overflow:hidden;background:#0f1720;
-  border:1px solid rgba(255,255,255,.18);box-shadow:0 30px 70px rgba(0,0,0,.4);
-  transform:perspective(1200px) rotateY(-6deg) rotateX(2deg);
+  border-radius:16px;overflow:hidden;background:#0f1720;
+  border:1px solid rgba(255,255,255,.2);box-shadow:0 28px 60px rgba(0,0,0,.35);
+  transform:perspective(1200px) rotateY(-4deg) rotateX(1deg);
 }
-.window-bar{display:flex;align-items:center;gap:7px;padding:10px 12px;background:#1a2430}
+.window-bar{display:flex;align-items:center;gap:7px;padding:12px 14px;background:#1a2430}
 .window-bar i{width:10px;height:10px;border-radius:50%;display:block}
 .window-bar i:nth-child(1){background:#ff5f57}
 .window-bar i:nth-child(2){background:#febc2e}
 .window-bar i:nth-child(3){background:#28c840}
 .window-bar span{margin-left:8px;font-size:10.5px;color:#8b98a5;letter-spacing:.03em}
-.window-body{padding:18px 18px 20px;background:linear-gradient(160deg,#101923,#0b121a)}
+.window-body{padding:22px 20px 21px;background:linear-gradient(160deg,#101923,#0b121a)}
 .meter{display:flex;align-items:center;gap:12px;margin-bottom:13px}
 .meter-label{font-size:11px;color:#8b98a5;width:74px;flex:0 0 74px}
 .meter-track{flex:1;height:8px;border-radius:999px;background:#1e2b38;overflow:hidden}
@@ -158,38 +179,37 @@ img,svg{display:block}
 .window-foot b{color:#4ade80;font-weight:600}
 @media(max-width:980px){
   .hero-inner{grid-template-columns:1fr;gap:28px}
-  .window{transform:none;max-width:520px}
-  .hero{padding:40px 26px 34px}
-  .hero h1{font-size:36px}
+  .window{transform:none;max-width:560px}
+  .hero{padding:44px 34px 38px}
 }
 
 /* ---------- Section shells ---------- */
-.section{padding:64px 0 8px}
-.section-head{max-width:720px;margin:0 auto 34px;text-align:center}
-.kicker{font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--accent);margin-bottom:10px}
-.section-head h2{font-size:32px;letter-spacing:-.02em;font-weight:650;line-height:1.2}
-.section-head p{color:var(--muted);margin-top:10px;font-size:15.5px}
+.section{padding:76px 0 8px}
+.section-head{max-width:720px;margin:0 auto 36px;text-align:center}
+.section-head h2{font-size:clamp(28px,3vw,36px);letter-spacing:-.035em;font-weight:700;line-height:1.15}
+.section-head p{color:var(--muted);margin:12px auto 0;font-size:15px;max-width:650px}
 .card{
   background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
-  padding:24px;box-shadow:var(--shadow);
+  padding:28px;box-shadow:var(--shadow);
 }
 .grid{display:grid;gap:16px}
 .grid-3{grid-template-columns:repeat(auto-fit,minmax(250px,1fr))}
 .grid-4{grid-template-columns:repeat(auto-fit,minmax(215px,1fr))}
+.grid-2{grid-template-columns:repeat(2,minmax(0,1fr))}
 
 /* ---------- Feature cards ---------- */
 .feature{
   background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
-  padding:22px;box-shadow:var(--shadow);transition:transform .18s,box-shadow .18s,border-color .18s;
+  padding:24px;box-shadow:var(--shadow);transition:transform .18s,box-shadow .18s,border-color .18s;
   position:relative;
 }
-.feature:hover{transform:translateY(-3px);box-shadow:0 14px 34px rgba(16,24,40,.12);border-color:#cfe3f8}
+.feature:hover{transform:translateY(-3px);box-shadow:0 14px 34px rgba(0,0,0,.1);border-color:#bdd9f6}
 .feature-icon{
-  width:42px;height:42px;border-radius:11px;display:grid;place-items:center;margin-bottom:14px;
-  background:linear-gradient(135deg,#e8f2fd,#d6e9fb);color:var(--accent);
+  width:44px;height:44px;border-radius:13px;display:grid;place-items:center;margin-bottom:16px;
+  background:linear-gradient(145deg,#eaf4ff,#dcecff);color:var(--accent);
 }
 .feature-icon svg{width:21px;height:21px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
-.feature h3{font-size:15px;font-weight:650;margin-bottom:6px;letter-spacing:-.01em}
+.feature h3{font-size:15px;font-weight:700;margin-bottom:7px;letter-spacing:-.015em}
 .feature p{font-size:13.5px;color:var(--muted);line-height:1.55}
 .feature .tag{
   position:absolute;top:16px;right:16px;font-size:10px;font-weight:700;letter-spacing:.05em;
@@ -204,21 +224,21 @@ img,svg{display:block}
   content:"";position:absolute;left:-27px;top:24px;width:14px;height:14px;border-radius:50%;
   background:#fff;border:3px solid #b9d6f2;
 }
-.release.current::before{border-color:var(--accent);box-shadow:0 0 0 4px rgba(0,103,192,.15)}
+.release.current::before{border-color:var(--accent)}
 .release-card{
   background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
   padding:22px 24px;box-shadow:var(--shadow);transition:box-shadow .18s;
 }
-.release.current .release-card{border-color:#bcd9f6;box-shadow:0 10px 30px rgba(0,103,192,.1)}
+.release.current .release-card{border-color:#bcd9f6;box-shadow:0 10px 30px rgba(0,0,0,.08)}
 .release-top{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:6px}
 .release-top h3{font-size:19px;font-weight:650;letter-spacing:-.01em}
 .badge{font-size:11px;font-weight:700;letter-spacing:.04em;padding:3px 10px;border-radius:999px;text-transform:uppercase}
 .badge.current{background:#e8f2fd;color:var(--accent)}
-.badge.old{background:#f0f0f4;color:#7b7b88}
-.badge.next{background:#fff4e5;color:#a15c00}
-.release-meta{font-size:12.5px;color:#8a8a96;margin-bottom:12px}
+.badge.old{background:#f0f0f4;color:#586779}
+.badge.next{background:#fff4e5;color:#805000}
+.release-meta{font-size:12.5px;color:#617389;margin-bottom:12px}
 .release-meta code{background:#f2f2f6;padding:1px 6px;border-radius:5px;font-size:11.5px;color:#555}
-.release ul{list-style:none;display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:6px 20px}
+.release ul{list-style:none;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,240px),1fr));gap:6px 20px}
 .release li{font-size:13.5px;color:var(--muted);padding-left:22px;position:relative}
 .release li::before{
   content:"";position:absolute;left:2px;top:8px;width:6px;height:6px;border-radius:50%;
@@ -229,9 +249,10 @@ img,svg{display:block}
 
 /* ---------- Comparison table ---------- */
 .table-wrap{overflow-x:auto;border:1px solid var(--line);border-radius:var(--radius);background:#fff;box-shadow:var(--shadow)}
+.visually-hidden{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
 table{width:100%;border-collapse:collapse;font-size:14px;min-width:520px}
 th,td{padding:14px 18px;text-align:left;border-bottom:1px solid var(--line)}
-th{font-size:11.5px;text-transform:uppercase;letter-spacing:.07em;color:#8a8a96;font-weight:700;background:#fafafc}
+th{font-size:10.5px;text-transform:uppercase;letter-spacing:.09em;color:#62748a;font-weight:800;background:#f7faff}
 tbody tr:last-child td{border-bottom:none}
 td.metric{font-weight:600}
 td.good{color:var(--good);font-weight:600}
@@ -247,7 +268,7 @@ td.bad{color:#9a9aa6}
 .shot-bar{display:flex;gap:6px;margin-bottom:14px}
 .shot-bar i{width:8px;height:8px;border-radius:50%;background:#2b3a4a}
 .shot-title{font-size:12px;color:#9fb0c0;font-weight:600;margin-bottom:12px;display:flex;justify-content:space-between}
-.shot-title span{color:#5f7182;font-weight:400}
+.shot-title span{color:#aab8c7;font-weight:400}
 .row{display:flex;justify-content:space-between;font-size:11.5px;color:#8b9aa8;padding:7px 0;border-bottom:1px solid #18232e}
 .row:last-child{border-bottom:none}
 .row b{color:#e6eef6;font-weight:600}
@@ -257,11 +278,11 @@ td.bad{color:#9a9aa6}
 /* ---------- Install / code ---------- */
 .tabs{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:18px}
 .tab{
-  border:1px solid var(--line);background:#fff;color:var(--muted);font-weight:600;font-size:13.5px;
+  border:1px solid var(--line);background:#fff;color:var(--muted);font-weight:700;font-size:13px;
   padding:9px 18px;border-radius:999px;cursor:pointer;transition:.16s;font-family:inherit;
 }
 .tab:hover{border-color:#bcd9f6;color:var(--accent)}
-.tab.active{background:var(--accent);border-color:var(--accent);color:#fff;box-shadow:0 4px 14px rgba(0,103,192,.25)}
+.tab.active{background:var(--accent);border-color:var(--accent);color:#fff;box-shadow:0 4px 14px rgba(0,0,0,.14)}
 .panel{display:none}
 .panel.active{display:block;animation:fade .25s ease}
 @keyframes fade{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
@@ -293,59 +314,54 @@ pre code{white-space:pre-wrap;word-break:break-word}
 .faq-item{background:#fff;border:1px solid var(--line);border-radius:12px;margin-bottom:10px;overflow:hidden;transition:box-shadow .18s}
 .faq-item:hover{box-shadow:var(--shadow)}
 .faq-q{
-  padding:16px 20px;font-weight:600;font-size:14.5px;cursor:pointer;
+  width:100%;text-align:left;background:#fff;border:0;padding:17px 20px;font-weight:700;font-size:14px;color:var(--ink);cursor:pointer;
   display:flex;justify-content:space-between;align-items:center;gap:16px;user-select:none;
 }
 .faq-q::after{content:"+";font-size:21px;color:var(--accent);font-weight:300;line-height:1;transition:transform .2s}
-.faq-item.open .faq-q::after{transform:rotate(45deg)}
+.faq-q[aria-expanded="true"]::after{transform:rotate(45deg)}
 .faq-a{padding:0 20px 18px;color:var(--muted);font-size:13.8px;display:none;line-height:1.65}
 .faq-item.open .faq-a{display:block}
 .faq-a code{background:#f2f2f6;padding:2px 6px;border-radius:5px;font-size:12.5px;color:#333}
 
 /* ---------- Footer ---------- */
-.footer{border-top:1px solid var(--line);margin-top:70px;padding:40px 0 30px;background:#fff}
-.footer-inner{max-width:1240px;margin:0 auto;padding:0 20px;display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:28px}
-.footer h5{font-size:12px;text-transform:uppercase;letter-spacing:.08em;color:#9a9aa6;margin-bottom:12px}
+.footer{border-top:1px solid var(--line);margin-top:82px;padding:48px 0 32px;background:#fff}
+.footer-inner{max-width:1360px;margin:0 auto;padding:0 28px;display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:32px}
+.footer h5{font-size:12px;text-transform:uppercase;letter-spacing:.08em;color:#52647a;margin-bottom:12px}
 .footer a{display:block;color:var(--muted);text-decoration:none;font-size:13.5px;padding:4px 0}
 .footer a:hover{color:var(--accent)}
 .footer .brand{margin-bottom:10px}
-.footer p.small{font-size:12.5px;color:#8a8a96;max-width:300px}
+.footer p.small{font-size:12.5px;color:var(--muted);max-width:300px}
 .legal{
-  max-width:1240px;margin:26px auto 0;padding:20px 20px 0;border-top:1px solid var(--line);
-  font-size:12px;color:#8a8a96;text-align:center;line-height:1.7;
+  max-width:1360px;margin:28px auto 0;padding:20px 28px 0;border-top:1px solid var(--line);
+  font-size:12px;color:var(--muted);text-align:center;line-height:1.7;
 }
 @media(max-width:820px){.footer-inner{grid-template-columns:1fr 1fr}}
 
-/* ---------- AI chat ---------- */
+/* ---------- Page-based quick answers ---------- */
 .ai-fab{
   position:fixed;bottom:24px;right:24px;z-index:600;width:58px;height:58px;border-radius:50%;
   border:none;cursor:pointer;display:grid;place-items:center;
-  background:linear-gradient(135deg,#0078d4,#00a4ef);
-  box-shadow:0 10px 30px rgba(0,120,212,.45);transition:transform .18s,box-shadow .18s;
+  background:linear-gradient(145deg,#1684e8,#075fc4);
+  box-shadow:0 10px 28px rgba(0,0,0,.22);transition:transform .18s,box-shadow .18s;
 }
-.ai-fab:hover{transform:translateY(-2px) scale(1.04);box-shadow:0 14px 36px rgba(0,120,212,.55)}
+.ai-fab:hover{transform:translateY(-2px) scale(1.04);box-shadow:0 14px 36px rgba(0,0,0,.26)}
 .ai-fab svg{width:27px;height:27px;stroke:#fff;fill:none;stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round}
-.ai-fab::after{
-  content:"";position:absolute;top:9px;right:9px;width:10px;height:10px;border-radius:50%;
-  background:#4ade80;border:2px solid #0b7bd4;
-}
 .ai-chat{
   position:fixed;bottom:96px;right:24px;z-index:600;width:382px;max-width:calc(100vw - 32px);
-  background:#fff;border-radius:16px;box-shadow:0 24px 64px rgba(16,24,40,.28);
+  background:#fff;border-radius:18px;box-shadow:0 24px 64px rgba(0,0,0,.24);
   overflow:hidden;display:none;flex-direction:column;border:1px solid var(--line);
 }
 .ai-chat.open{display:flex;animation:pop .22s ease}
 @keyframes pop{from{opacity:0;transform:translateY(10px) scale(.98)}to{opacity:1;transform:none}}
-.ai-header{background:linear-gradient(135deg,#0067c0,#0078d4);color:#fff;padding:14px 16px;display:flex;align-items:center;gap:11px}
+.ai-header{background:linear-gradient(135deg,#102b4b,#075fc4);color:#fff;padding:15px 16px;display:flex;align-items:center;gap:11px}
 .ai-avatar{width:34px;height:34px;border-radius:9px;background:rgba(255,255,255,.16);display:grid;place-items:center;flex:0 0 34px}
 .ai-avatar svg{width:19px;height:19px;stroke:#fff;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
 .ai-header-text{flex:1;min-width:0}
 .ai-header h3{font-size:14px;font-weight:650;margin:0}
-.ai-header p{font-size:11.5px;color:rgba(255,255,255,.75);margin:1px 0 0;display:flex;align-items:center;gap:5px}
-.ai-header p i{width:6px;height:6px;border-radius:50%;background:#4ade80;display:inline-block}
+.ai-header p{font-size:11.5px;color:rgba(255,255,255,.77);margin:2px 0 0}
 .ai-close{background:rgba(255,255,255,.12);border:none;color:#fff;width:30px;height:30px;border-radius:8px;font-size:19px;line-height:1;cursor:pointer;transition:.16s}
 .ai-close:hover{background:rgba(255,255,255,.22)}
-.ai-messages{height:330px;overflow-y:auto;padding:16px;background:#f7f9fc;display:flex;flex-direction:column;gap:9px}
+.ai-messages{height:330px;overflow-y:auto;padding:16px;background:#f6f9fd;display:flex;flex-direction:column;gap:9px}
 .ai-msg{padding:10px 14px;border-radius:14px;max-width:86%;font-size:13.3px;line-height:1.5;word-wrap:break-word}
 .ai-msg.bot{background:#fff;border:1px solid var(--line);align-self:flex-start;border-bottom-left-radius:5px;color:#333}
 .ai-msg.user{background:var(--accent);color:#fff;align-self:flex-end;border-bottom-right-radius:5px}
@@ -355,7 +371,7 @@ pre code{white-space:pre-wrap;word-break:break-word}
 .ai-typing i:nth-child(2){animation-delay:.2s}
 .ai-typing i:nth-child(3){animation-delay:.4s}
 @keyframes blink{0%,80%,100%{opacity:.3;transform:translateY(0)}40%{opacity:1;transform:translateY(-3px)}}
-.ai-suggest{display:flex;gap:6px;flex-wrap:wrap;padding:0 14px 12px;background:#f7f9fc}
+.ai-suggest{display:flex;gap:6px;flex-wrap:wrap;padding:0 14px 12px;background:#f6f9fd}
 .ai-suggest button{
   border:1px solid #cfe3f8;background:#fff;color:var(--accent);border-radius:999px;
   font-size:11.5px;font-weight:600;padding:6px 12px;cursor:pointer;font-family:inherit;transition:.16s;
@@ -366,7 +382,7 @@ pre code{white-space:pre-wrap;word-break:break-word}
   flex:1;padding:11px 14px;border:1px solid var(--line);border-radius:10px;font-size:13.5px;
   outline:none;font-family:inherit;transition:.16s;background:#fafafc;
 }
-.ai-input input:focus{border-color:var(--accent);background:#fff;box-shadow:0 0 0 3px rgba(0,120,212,.12)}
+.ai-input input:focus{border-color:var(--accent);background:#fff}
 .ai-send{
   width:42px;height:42px;flex:0 0 42px;border:none;border-radius:10px;cursor:pointer;
   background:var(--accent);display:grid;place-items:center;transition:.16s;
@@ -374,24 +390,54 @@ pre code{white-space:pre-wrap;word-break:break-word}
 .ai-send:hover{background:var(--accent-dark)}
 .ai-send svg{width:18px;height:18px;stroke:#fff;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
 
-/* reveal on scroll */
-.reveal{opacity:0;transform:translateY(16px);transition:opacity .5s ease,transform .5s ease}
-.reveal.in{opacity:1;transform:none}
-@media(prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}}
+@media(max-width:700px){
+  .topbar-inner{min-height:66px;padding:9px 18px}
+  .layout{padding-inline:18px}
+  .sidebar{top:66px;height:calc(100dvh - 66px)}
+  .menu-scrim{inset:66px 0 0}
+  .hero{margin-top:18px;padding:36px 24px 30px;border-radius:21px}
+  .hero-inner{gap:26px}
+  .hero h1{font-size:clamp(38px,10vw,50px)}
+  .hero h1 span{font-size:18px;line-height:1.35}
+  .section{padding-top:60px}
+  .card{padding:21px}
+  .grid-2{grid-template-columns:1fr}
+  .footer-inner{padding-inline:20px;gap:24px}
+  .legal{padding-inline:20px}
+}
+@media(max-width:480px){
+  .brand{font-size:14px}
+  .hero{padding:30px 20px 24px}
+  .hero-actions{align-items:stretch}
+  .hero-actions .btn{justify-content:center;width:100%}
+  .hero-note{max-width:280px}
+  .window-body{padding:18px 14px}
+  .meter{gap:8px}
+  .meter-label{width:60px;flex-basis:60px}
+  .footer-inner{grid-template-columns:1fr 1fr}
+  .footer-inner>div:first-child{grid-column:1/-1}
+  .ai-fab{width:54px;height:54px;right:16px;bottom:16px}
+  .ai-chat{right:12px;bottom:82px;max-width:calc(100vw - 24px)}
+}
+@media(prefers-reduced-motion:reduce){
+  *,*::before,*::after{scroll-behavior:auto!important;animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}
+}
 </style>
 </head>
 <body>
 
+<a class="skip-link" href="#main">Skip to content</a>
+
 <!-- ================= TOP BAR ================= -->
 <header class="topbar">
   <div class="topbar-inner">
-    <a class="brand" href="#top">
+    <a class="brand" href="#top" aria-label="Windows 11 Update home">
       <span class="brand-mark">
         <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor"><rect x="2" y="2" width="9" height="9" rx="1.5"/><rect x="13" y="2" width="9" height="9" rx="1.5"/><rect x="2" y="13" width="9" height="9" rx="1.5"/><rect x="13" y="13" width="9" height="9" rx="1.5"/></svg>
       </span>
       Windows 11 Update
     </a>
-    <nav class="topbar-links">
+    <nav class="topbar-links" aria-label="Primary navigation">
       <a href="#features">Features</a>
       <a href="#versions">Versions</a>
       <a href="#install">Install</a>
@@ -399,7 +445,7 @@ pre code{white-space:pre-wrap;word-break:break-word}
       <a class="ghost" href="https://github.com/GoStudios-Real/Windows11Update">GitHub</a>
       <a class="topbar-cta" href="https://github.com/GoStudios-Real/Windows11Update/releases/latest/download/Windows11FastLight-Package.zip">Download</a>
     </nav>
-    <button class="hamburger" onclick="document.querySelector('.sidebar').classList.toggle('open')" aria-label="Menu">
+    <button class="hamburger" type="button" aria-label="Open section navigation" aria-controls="siteNav" aria-expanded="false">
       <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
     </button>
   </div>
@@ -408,7 +454,7 @@ pre code{white-space:pre-wrap;word-break:break-word}
 <div class="layout" id="top">
 
   <!-- ================= SIDEBAR ================= -->
-  <aside class="sidebar">
+  <aside class="sidebar" id="siteNav" aria-label="Section navigation">
     <div class="sidebar-group">
       <div class="sidebar-label">Overview</div>
       <ul class="sidebar-nav">
@@ -443,9 +489,10 @@ pre code{white-space:pre-wrap;word-break:break-word}
       <p>Signed &amp; ready to install</p>
     </div>
   </aside>
+  <button class="menu-scrim" type="button" aria-label="Close section navigation" aria-hidden="true" tabindex="-1"></button>
 
   <!-- ================= CONTENT ================= -->
-  <main class="content">
+  <main class="content" id="main">
 
     <!-- HERO -->
     <section class="hero">
@@ -484,7 +531,6 @@ pre code{white-space:pre-wrap;word-break:break-word}
     <!-- HIGHLIGHTS -->
     <section class="section" id="highlights">
       <div class="section-head reveal">
-        <div class="kicker">What's new</div>
         <h2>Everything in 26H2.3</h2>
         <p>The biggest release so far. Twelve optimizations grouped into privacy, performance and storage — all reversible with a single command.</p>
       </div>
@@ -499,7 +545,6 @@ pre code{white-space:pre-wrap;word-break:break-word}
     <!-- FEATURES -->
     <section class="section" id="features">
       <div class="section-head reveal">
-        <div class="kicker">Features</div>
         <h2>12 optimizations, one package</h2>
         <p>Each change targets a known source of background load in Windows 11. Nothing is deleted, and system files are never modified.</p>
       </div>
@@ -522,13 +567,13 @@ pre code{white-space:pre-wrap;word-break:break-word}
     <!-- PERFORMANCE -->
     <section class="section" id="performance">
       <div class="section-head reveal">
-        <div class="kicker">Performance</div>
         <h2>What changes after install</h2>
         <p>Typical results on a Windows 11 Pro system after the update settles for a few minutes.</p>
       </div>
       <div class="table-wrap reveal">
         <table>
-          <thead><tr><th>Metric</th><th>Before</th><th>After</th><th>Change</th></tr></thead>
+          <caption class="visually-hidden">Representative performance changes after installing the update</caption>
+          <thead><tr><th scope="col">Metric</th><th scope="col">Before</th><th scope="col">After</th><th scope="col">Change</th></tr></thead>
           <tbody>
             <tr><td class="metric">Background processes</td><td class="bad">66</td><td class="good">41</td><td><span class="tick good"><svg viewBox="0 0 24 24"><path d="m5 13 4 4L19 7"/></svg>−38%</span></td></tr>
             <tr><td class="metric">Idle RAM usage</td><td class="bad">4.8 GB</td><td class="good">3.4 GB</td><td><span class="tick good"><svg viewBox="0 0 24 24"><path d="m5 13 4 4L19 7"/></svg>−29%</span></td></tr>
@@ -547,7 +592,6 @@ pre code{white-space:pre-wrap;word-break:break-word}
     <!-- SCREENSHOTS -->
     <section class="section" id="screenshots">
       <div class="section-head reveal">
-        <div class="kicker">Screenshots</div>
         <h2>See the difference</h2>
         <p>Task Manager and Services before and after the update.</p>
       </div>
@@ -591,18 +635,17 @@ pre code{white-space:pre-wrap;word-break:break-word}
     <!-- INSTALL -->
     <section class="section" id="install">
       <div class="section-head reveal">
-        <div class="kicker">Get started</div>
         <h2>Install in under a minute</h2>
         <p>Pick a method, copy the command, and run it in an elevated PowerShell window. No reboot is required.</p>
       </div>
       <div class="card reveal">
-        <div class="tabs" role="tablist">
-          <button class="tab active" onclick="showTab(this,'t1')">Direct download</button>
-          <button class="tab" onclick="showTab(this,'t2')">PowerShell</button>
-          <button class="tab" onclick="showTab(this,'t3')">Signed verification</button>
+        <div class="tabs" role="tablist" aria-label="Installation methods">
+          <button class="tab active" id="tab-t1" role="tab" aria-selected="true" aria-controls="t1" tabindex="0" onclick="showTab(this,'t1')">Direct download</button>
+          <button class="tab" id="tab-t2" role="tab" aria-selected="false" aria-controls="t2" tabindex="-1" onclick="showTab(this,'t2')">PowerShell</button>
+          <button class="tab" id="tab-t3" role="tab" aria-selected="false" aria-controls="t3" tabindex="-1" onclick="showTab(this,'t3')">Signed verification</button>
         </div>
 
-        <div class="panel active" id="t1">
+        <div class="panel active" id="t1" role="tabpanel" aria-labelledby="tab-t1" tabindex="0">
           <div class="step"><div class="step-num">1</div><div><h4>Download the package</h4><p>Grab the latest release ZIP from GitHub. It is small and contains the signed installer.</p></div></div>
           <div class="code-block">
             <div class="code-head"><span>Download</span><button class="copy-btn" onclick="copyCode(this)">Copy</button></div>
@@ -615,7 +658,7 @@ pre code{white-space:pre-wrap;word-break:break-word}
           </div>
         </div>
 
-        <div class="panel" id="t2">
+        <div class="panel" id="t2" role="tabpanel" aria-labelledby="tab-t2" tabindex="0">
           <div class="step"><div class="step-num">1</div><div><h4>Open an elevated terminal</h4><p>Press <em>Win + X</em> and choose <em>Terminal (Admin)</em>.</p></div></div>
           <div class="step"><div class="step-num">2</div><div><h4>Download, extract and install</h4><p>This one block does everything in a temporary folder.</p></div></div>
           <div class="code-block">
@@ -626,7 +669,7 @@ powershell -ExecutionPolicy Bypass -File "C:\temp\update\Windows11FastLight-Setu
           </div>
         </div>
 
-        <div class="panel" id="t3">
+        <div class="panel" id="t3" role="tabpanel" aria-labelledby="tab-t3" tabindex="0">
           <div class="step"><div class="step-num">1</div><div><h4>Trust the certificate</h4><p>Optional. Imports <code>GoStudios.cer</code> into Trusted Root and Trusted Publisher so the signature verifies.</p></div></div>
           <div class="code-block">
             <div class="code-head"><span>PowerShell — Administrator</span><button class="copy-btn" onclick="copyCode(this)">Copy</button></div>
@@ -646,7 +689,7 @@ powershell -ExecutionPolicy Bypass -File "Windows11FastLight-Setup.ps1" -Silent<
         </div>
       </div>
 
-      <div class="grid" style="grid-template-columns:1fr 1fr;margin-top:16px">
+      <div class="grid grid-2 install-extras">
         <div class="card reveal">
           <h3 style="font-size:15px;margin-bottom:10px">Verify it installed</h3>
           <div class="code-block">
@@ -674,7 +717,6 @@ Set-ItemProperty -Path "HKLM:\SOFTWARE\Policies\Microsoft\Windows\DataCollection
     <!-- VERSIONS -->
     <section class="section" id="versions">
       <div class="section-head reveal">
-        <div class="kicker">Version history</div>
         <h2>Versions &amp; release notes</h2>
         <p>Every release is cumulative. Installing the latest gives you everything from the previous versions.</p>
       </div>
@@ -753,20 +795,19 @@ Set-ItemProperty -Path "HKLM:\SOFTWARE\Policies\Microsoft\Windows\DataCollection
     <!-- FAQ -->
     <section class="section" id="faq">
       <div class="section-head reveal">
-        <div class="kicker">FAQ</div>
         <h2>Frequently asked questions</h2>
-        <p>Still unsure? Ask the AI assistant in the corner — it answers from the same information.</p>
+        <p>Need a quick answer? Use the page-based helper or browse the full guidance below.</p>
       </div>
       <div class="reveal">
-        <div class="faq-item"><div class="faq-q" onclick="this.parentElement.classList.toggle('open')">Is this safe to install?</div><div class="faq-a">Yes. Every change is a registry value or a service start type, and all of them are reversible. No system files are deleted or modified. The installer is signed with a code-signing certificate.</div></div>
-        <div class="faq-item"><div class="faq-q" onclick="this.parentElement.classList.toggle('open')">Will this break Windows Update?</div><div class="faq-a">No. Windows Update and its related services stay enabled. Only unnecessary background services such as DiagTrack, SysMain and WSearch are stopped.</div></div>
-        <div class="faq-item"><div class="faq-q" onclick="this.parentElement.classList.toggle('open')">Can I undo the changes?</div><div class="faq-a">Yes. Use the <a href="#install">Undo commands</a> in the install section, or re-enable each service manually. Nothing is one-way.</div></div>
-        <div class="faq-item"><div class="faq-q" onclick="this.parentElement.classList.toggle('open')">Does this work on Windows 10?</div><div class="faq-a">This update targets Windows 11. Some optimizations may work on Windows 10, but they are not tested or supported.</div></div>
-        <div class="faq-item"><div class="faq-q" onclick="this.parentElement.classList.toggle('open')">How much disk space does it free?</div><div class="faq-a">Disabling hibernation frees roughly the size of your RAM (for example 16&nbsp;GB on a 16&nbsp;GB machine). Cleaning temp files and the update cache typically frees another 1–5&nbsp;GB.</div></div>
-        <div class="faq-item"><div class="faq-q" onclick="this.parentElement.classList.toggle('open')">Will my PC actually be faster?</div><div class="faq-a">Background CPU and disk activity drop, boot is shorter, and the UI responds more quickly. The exact gain depends on your hardware and how much software you have installed.</div></div>
-        <div class="faq-item"><div class="faq-q" onclick="this.parentElement.classList.toggle('open')">Is this from Microsoft?</div><div class="faq-a">No. This is a community project by GoStudios, built on Microsoft's documented Windows 11 settings. It is not affiliated with, endorsed by, or supported by Microsoft.</div></div>
-        <div class="faq-item"><div class="faq-q" onclick="this.parentElement.classList.toggle('open')">How do I verify it installed?</div><div class="faq-a">Run <code>Get-ItemProperty "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\Windows11FastLight" | Select DisplayName, DisplayVersion</code>. You should see version <code>26H2.3</code>.</div></div>
-        <div class="faq-item"><div class="faq-q" onclick="this.parentElement.classList.toggle('open')">Do I need to reboot?</div><div class="faq-a">No. Most changes take effect immediately. A reboot is only useful to measure the new cold boot time, and to fully release services that were already running.</div></div>
+        <div class="faq-item"><button class="faq-q" type="button" aria-expanded="false" aria-controls="faq-safe">Is this safe to install?</button><div class="faq-a" id="faq-safe">Yes. Every change is a registry value or a service start type, and all of them are reversible. No system files are deleted or modified. The installer is signed with a code-signing certificate.</div></div>
+        <div class="faq-item"><button class="faq-q" type="button" aria-expanded="false" aria-controls="faq-update">Will this break Windows Update?</button><div class="faq-a" id="faq-update">No. Windows Update and its related services stay enabled. Only unnecessary background services such as DiagTrack, SysMain and WSearch are stopped.</div></div>
+        <div class="faq-item"><button class="faq-q" type="button" aria-expanded="false" aria-controls="faq-undo">Can I undo the changes?</button><div class="faq-a" id="faq-undo">Yes. Use the <a href="#install">Undo commands</a> in the install section, or re-enable each service manually. Nothing is one-way.</div></div>
+        <div class="faq-item"><button class="faq-q" type="button" aria-expanded="false" aria-controls="faq-win10">Does this work on Windows 10?</button><div class="faq-a" id="faq-win10">This update targets Windows 11. Some optimizations may work on Windows 10, but they are not tested or supported.</div></div>
+        <div class="faq-item"><button class="faq-q" type="button" aria-expanded="false" aria-controls="faq-space">How much disk space does it free?</button><div class="faq-a" id="faq-space">Disabling hibernation frees roughly the size of your RAM (for example 16&nbsp;GB on a 16&nbsp;GB machine). Cleaning temp files and the update cache typically frees another 1–5&nbsp;GB.</div></div>
+        <div class="faq-item"><button class="faq-q" type="button" aria-expanded="false" aria-controls="faq-speed">Will my PC actually be faster?</button><div class="faq-a" id="faq-speed">Background CPU and disk activity drop, boot is shorter, and the UI responds more quickly. The exact gain depends on your hardware and how much software you have installed.</div></div>
+        <div class="faq-item"><button class="faq-q" type="button" aria-expanded="false" aria-controls="faq-microsoft">Is this from Microsoft?</button><div class="faq-a" id="faq-microsoft">No. This is a community project by GoStudios, built on Microsoft's documented Windows 11 settings. It is not affiliated with, endorsed by, or supported by Microsoft.</div></div>
+        <div class="faq-item"><button class="faq-q" type="button" aria-expanded="false" aria-controls="faq-verify">How do I verify it installed?</button><div class="faq-a" id="faq-verify">Run <code>Get-ItemProperty "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\Windows11FastLight" | Select DisplayName, DisplayVersion</code>. You should see version <code>26H2.3</code>.</div></div>
+        <div class="faq-item"><button class="faq-q" type="button" aria-expanded="false" aria-controls="faq-reboot">Do I need to reboot?</button><div class="faq-a" id="faq-reboot">No. Most changes take effect immediately. A reboot is only useful to measure the new cold boot time, and to fully release services that were already running.</div></div>
       </div>
     </section>
 
@@ -812,47 +853,74 @@ Set-ItemProperty -Path "HKLM:\SOFTWARE\Policies\Microsoft\Windows\DataCollection
   </div>
 </footer>
 
-<!-- ================= AI SUPPORT ================= -->
-<button class="ai-fab" onclick="toggleChat()" aria-label="Open AI support" title="AI support">
-  <svg viewBox="0 0 24 24"><rect x="4" y="8" width="16" height="12" rx="3"/><circle cx="9" cy="14" r="1.2" fill="#fff" stroke="none"/><circle cx="15" cy="14" r="1.2" fill="#fff" stroke="none"/><path d="M12 8V4M9 4h6"/></svg>
+<!-- ================= QUICK ANSWERS ================= -->
+<button class="ai-fab" id="helpButton" type="button" aria-controls="aiChat" aria-expanded="false" aria-label="Open quick answers" title="Quick answers">
+  <svg viewBox="0 0 24 24"><path d="M20 11.5a7.5 7.5 0 0 1-7.5 7.5H6l-3 2v-6.5A7.5 7.5 0 1 1 20 11.5Z"/><path d="M10 9.5a2 2 0 1 1 3.4 1.4c-.8.7-1.4 1-1.4 2.1M12 16h.01"/></svg>
 </button>
 
-<div class="ai-chat" id="aiChat">
+<div class="ai-chat" id="aiChat" role="dialog" aria-labelledby="helpTitle" aria-modal="false">
   <div class="ai-header">
     <div class="ai-avatar">
-      <svg viewBox="0 0 24 24"><rect x="4" y="8" width="16" height="12" rx="3"/><circle cx="9" cy="14" r="1.1" fill="#fff" stroke="none"/><circle cx="15" cy="14" r="1.1" fill="#fff" stroke="none"/><path d="M12 8V4M9 4h6"/></svg>
+      <svg viewBox="0 0 24 24"><path d="M20 11.5a7.5 7.5 0 0 1-7.5 7.5H6l-3 2v-6.5A7.5 7.5 0 1 1 20 11.5Z"/><path d="M10 9.5a2 2 0 1 1 3.4 1.4c-.8.7-1.4 1-1.4 2.1M12 16h.01"/></svg>
     </div>
     <div class="ai-header-text">
-      <h3>Update Assistant</h3>
-      <p><i></i>Online · answers instantly</p>
+      <h3 id="helpTitle">Quick answers</h3>
+      <p>Instant answers from this page</p>
     </div>
-    <button class="ai-close" onclick="toggleChat()" aria-label="Close">&times;</button>
+    <button class="ai-close" type="button" aria-label="Close quick answers">&times;</button>
   </div>
-  <div class="ai-messages" id="aiMessages">
-    <div class="ai-msg bot">Hi! I'm the Windows 11 Update assistant. Ask me about installing, versions, verification, or how to undo changes.</div>
+  <div class="ai-messages" id="aiMessages" role="log" aria-live="polite" aria-relevant="additions">
+    <div class="ai-msg bot">Hi! I can help with installing, versions, verification, or undoing changes. Answers are based on the information on this page.</div>
   </div>
   <div class="ai-suggest">
-    <button onclick="askSuggestion('How do I install?')">How do I install?</button>
-    <button onclick="askSuggestion('What is in 26H2.3?')">What's in 26H2.3?</button>
-    <button onclick="askSuggestion('How do I undo it?')">How do I undo it?</button>
+    <button type="button" onclick="askQuickQuestion('How do I install?')">How do I install?</button>
+    <button type="button" onclick="askQuickQuestion('What is in 26H2.3?')">What's in 26H2.3?</button>
+    <button type="button" onclick="askQuickQuestion('How do I undo it?')">How do I undo it?</button>
   </div>
   <div class="ai-input">
-    <input type="text" id="aiInput" placeholder="Ask a question..." onkeydown="if(event.key==='Enter')sendAI()" aria-label="Ask a question">
-    <button class="ai-send" onclick="sendAI()" aria-label="Send">
+    <input type="text" id="aiInput" placeholder="Ask a question..." aria-label="Ask a question">
+    <button class="ai-send" type="button" aria-label="Send question">
       <svg viewBox="0 0 24 24"><path d="m22 2-11 11"/><path d="M22 2 15 22l-4-9-9-4z"/></svg>
     </button>
   </div>
 </div>
 
 <script>
-/* ---------- Tabs ---------- */
+/* ---------- Installation tabs ---------- */
 function showTab(btn, id){
   var card = btn.closest('.card');
-  card.querySelectorAll('.tab').forEach(function(t){ t.classList.remove('active'); });
+  card.querySelectorAll('.tab').forEach(function(t){
+    var selected = t === btn;
+    t.classList.toggle('active', selected);
+    t.setAttribute('aria-selected', String(selected));
+    t.tabIndex = selected ? 0 : -1;
+  });
   card.querySelectorAll('.panel').forEach(function(p){ p.classList.remove('active'); });
   btn.classList.add('active');
   document.getElementById(id).classList.add('active');
 }
+document.querySelectorAll('[role="tablist"]').forEach(function(list){
+  list.addEventListener('keydown', function(event){
+    if (event.key !== 'ArrowLeft' && event.key !== 'ArrowRight') return;
+    var tabs = Array.from(list.querySelectorAll('[role="tab"]'));
+    var current = tabs.indexOf(document.activeElement);
+    if (current < 0) return;
+    event.preventDefault();
+    var step = event.key === 'ArrowRight' ? 1 : -1;
+    var next = tabs[(current + step + tabs.length) % tabs.length];
+    next.focus();
+    next.click();
+  });
+});
+
+/* ---------- FAQ accordion ---------- */
+document.querySelectorAll('.faq-q').forEach(function(button){
+  button.addEventListener('click', function(){
+    var expanded = button.getAttribute('aria-expanded') === 'true';
+    button.setAttribute('aria-expanded', String(!expanded));
+    button.parentElement.classList.toggle('open', !expanded);
+  });
+});
 
 /* ---------- Copy buttons ---------- */
 function copyCode(btn){
@@ -880,38 +948,50 @@ function fallbackCopy(text, done){
   document.body.removeChild(ta);
 }
 
-/* ---------- AI chat ---------- */
-function toggleChat(){
-  var chat = document.getElementById('aiChat');
-  chat.classList.toggle('open');
-  if (chat.classList.contains('open')){
-    document.getElementById('aiInput').focus();
-  }
+/* ---------- Page-based quick answers ---------- */
+var helpButton = document.getElementById('helpButton');
+var helpPanel = document.getElementById('aiChat');
+var helpInput = document.getElementById('aiInput');
+function setHelpOpen(open, returnFocus){
+  helpPanel.classList.toggle('open', open);
+  helpButton.setAttribute('aria-expanded', String(open));
+  if (open) helpInput.focus();
+  else if (returnFocus) helpButton.focus();
 }
+helpButton.addEventListener('click', function(){
+  setHelpOpen(!helpPanel.classList.contains('open'), false);
+});
+document.querySelector('.ai-close').addEventListener('click', function(){
+  setHelpOpen(false, true);
+});
+helpInput.addEventListener('keydown', function(event){
+  if (event.key === 'Enter') sendHelpQuestion();
+});
+document.querySelector('.ai-send').addEventListener('click', sendHelpQuestion);
+document.addEventListener('keydown', function(event){
+  if (event.key === 'Escape' && helpPanel.classList.contains('open')) setHelpOpen(false, true);
+});
 function addMsg(text, who){
   var box = document.getElementById('aiMessages');
   var el = document.createElement('div');
   el.className = 'ai-msg ' + who;
-  el.innerHTML = text;
+  if (who === 'user') el.textContent = text;
+  else el.innerHTML = text;
   box.appendChild(el);
   box.scrollTop = box.scrollHeight;
 }
-function sendAI(){
-  var input = document.getElementById('aiInput');
-  var msg = input.value.trim();
+function sendHelpQuestion(){
+  var msg = helpInput.value.trim();
   if (!msg) return;
-  addMsg(escapeHtml(msg), 'user');
-  input.value = '';
-  respond(msg);
+  addMsg(msg, 'user');
+  helpInput.value = '';
+  answerQuestion(msg);
 }
-function askSuggestion(text){
-  addMsg(escapeHtml(text), 'user');
-  respond(text);
+function askQuickQuestion(text){
+  addMsg(text, 'user');
+  answerQuestion(text);
 }
-function escapeHtml(s){
-  return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
-}
-function respond(msg){
+function answerQuestion(msg){
   var box = document.getElementById('aiMessages');
   var typing = document.createElement('div');
   typing.className = 'ai-typing';
@@ -919,13 +999,13 @@ function respond(msg){
   box.appendChild(typing);
   box.scrollTop = box.scrollHeight;
 
-  var answer = getAIResponse(msg.toLowerCase());
+  var answer = getPageAnswer(msg.toLowerCase());
   setTimeout(function(){
     typing.remove();
     addMsg(answer, 'bot');
   }, 550);
 }
-function getAIResponse(q){
+function getPageAnswer(q){
   if (q.indexOf('install') > -1 || q.indexOf('setup') > -1)
     return 'Download the ZIP from the latest release, extract it, then run in an elevated PowerShell:<br><code>powershell -ExecutionPolicy Bypass -File "Windows11FastLight-Setup.ps1" -Silent</code>';
   if (q.indexOf('26h2.3') > -1 || q.indexOf('version') > -1 || q.indexOf('what') > -1 || q.indexOf('new') > -1)
@@ -950,7 +1030,7 @@ function getAIResponse(q){
     return 'Windows Update stays enabled. Only unnecessary background services are stopped, so Windows can still download and install updates.';
   if (q.indexOf('requirement') > -1 || q.indexOf('support') > -1)
     return 'Windows 11, 64-bit, and an administrator PowerShell window. The package itself is about 11 KB.';
-  return 'I can help with installing, versions, verification, safety, performance, disk space and undoing changes. Try one of the suggestions below the chat.';
+  return 'I can answer questions about installing, versions, verification, safety, performance, disk space and undoing changes. Try one of the suggestions below.';
 }
 
 /* ---------- Scroll spy ---------- */
@@ -975,26 +1055,30 @@ function getAIResponse(q){
   });
 })();
 
-/* ---------- Reveal on scroll ---------- */
-(function(){
-  var els = document.querySelectorAll('.reveal');
-  if (!('IntersectionObserver' in window)){
-    els.forEach(function(el){ el.classList.add('in'); });
-    return;
-  }
-  var io = new IntersectionObserver(function(entries){
-    entries.forEach(function(e){
-      if (e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); }
-    });
-  }, { threshold: 0.08 });
-  els.forEach(function(el){ io.observe(el); });
-})();
-
-/* ---------- Close sidebar on nav click (mobile) ---------- */
+/* ---------- Section navigation (mobile) ---------- */
+var sidebar = document.querySelector('.sidebar');
+var menuButton = document.querySelector('.hamburger');
+var menuScrim = document.querySelector('.menu-scrim');
+function setMenuOpen(open, returnFocus){
+  sidebar.classList.toggle('open', open);
+  menuScrim.classList.toggle('open', open);
+  menuButton.setAttribute('aria-expanded', String(open));
+  menuButton.setAttribute('aria-label', open ? 'Close section navigation' : 'Open section navigation');
+  menuScrim.setAttribute('aria-hidden', String(!open));
+  if (open) sidebar.querySelector('a').focus();
+  else if (returnFocus) menuButton.focus();
+}
+menuButton.addEventListener('click', function(){
+  setMenuOpen(!sidebar.classList.contains('open'), false);
+});
+menuScrim.addEventListener('click', function(){ setMenuOpen(false, false); });
 document.querySelectorAll('.sidebar-nav a').forEach(function(a){
   a.addEventListener('click', function(){
-    document.querySelector('.sidebar').classList.remove('open');
+    setMenuOpen(false, false);
   });
+});
+document.addEventListener('keydown', function(event){
+  if (event.key === 'Escape' && sidebar.classList.contains('open')) setMenuOpen(false, true);
 });
 </script>
 </body>
