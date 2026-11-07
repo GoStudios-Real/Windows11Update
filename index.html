@@ -3,243 +3,999 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Windows 11 Update - GoStudios</title>
+<title>Windows 11 Update — Faster, Quicker, Lighter</title>
+<meta name="description" content="Windows 11 Update is a free optimization package that makes Windows 11 faster, quicker and lighter. Version 26H2.3 with 12 reversible optimizations.">
 <style>
+:root{
+  --accent:#0067c0;
+  --accent-2:#0078d4;
+  --accent-dark:#004578;
+  --ink:#1b1b1f;
+  --muted:#5c5c66;
+  --line:#e6e6eb;
+  --bg:#f7f7fa;
+  --card:#ffffff;
+  --good:#0f7b3f;
+  --radius:14px;
+  --shadow:0 2px 10px rgba(16,24,40,.06);
+  --shadow-lg:0 18px 48px rgba(16,24,40,.16);
+}
 *{box-sizing:border-box;margin:0;padding:0}
-body{font-family:'Segoe UI','Segoe UI Variable',sans-serif;background:#f3f3f3;color:#1a1a1a;line-height:1.6;display:flex;min-height:100vh}
-.sidebar{width:260px;background:#1a1a2e;color:white;padding:20px;position:fixed;height:100vh;overflow-y:auto;z-index:200;transition:transform 0.3s}
-.sidebar-logo{font-size:20px;font-weight:700;margin-bottom:30px;color:#0078d4;display:flex;align-items:center;gap:10px}
-.sidebar-nav{list-style:none}
-.sidebar-nav li{margin:4px 0}
-.sidebar-nav a{color:#ccc;text-decoration:none;display:block;padding:10px 16px;border-radius:6px;transition:background 0.2s,color 0.2s}
-.sidebar-nav a:hover{background:rgba(255,255,255,0.1);color:white}
-.sidebar-nav a.active{background:#0078d4;color:white}
-.sidebar-footer{margin-top:40px;padding:16px;background:rgba(255,255,255,0.05);border-radius:8px}
-.sidebar-footer p{font-size:12px;color:#888;margin:4px 0}
-.main{margin-left:260px;flex:1}
-.hero{background:linear-gradient(135deg,#0078d4 0%,#005a9e 50%,#003d6b 100%);color:white;padding:80px 20px;text-align:center;position:relative;overflow:hidden}
-.hero::before{content:'';position:absolute;top:0;left:0;right:0;bottom:0;background:url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="50" cy="50" r="40" fill="none" stroke="rgba(255,255,255,0.05)" stroke-width="0.5"/></svg>');background-size:200px 200px;opacity:0.5}
-.hero h1{font-size:52px;font-weight:600;margin-bottom:16px;position:relative}
-.hero p{font-size:20px;opacity:0.9;max-width:600px;margin:0 auto 30px;position:relative}
-.btn{display:inline-block;padding:14px 32px;background:white;color:#0078d4;text-decoration:none;border-radius:6px;font-weight:600;font-size:16px;margin:8px;transition:transform 0.2s,box-shadow 0.2s;border:none;cursor:pointer}
-.btn:hover{transform:translateY(-2px);box-shadow:0 4px 16px rgba(0,0,0,0.2)}
-.btn-outline{background:transparent;color:white;border:2px solid white}
-.btn-outline:hover{background:rgba(255,255,255,0.1)}
-.container{max-width:1100px;margin:0 auto;padding:0 20px}
-.section{padding:60px 0}
-.section h2{font-size:32px;margin-bottom:30px;text-align:center;font-weight:600}
-.card{background:white;padding:24px;border-radius:8px;margin:16px 0;box-shadow:0 2px 8px rgba(0,0,0,0.06);transition:box-shadow 0.2s}
-.card:hover{box-shadow:0 4px 16px rgba(0,0,0,0.1)}
-.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px}
-.feature-card{background:white;padding:24px;border-radius:8px;box-shadow:0 2px 8px rgba(0,0,0,0.06);transition:transform 0.2s,box-shadow 0.2s;border:1px solid #eee}
-.feature-card:hover{transform:translateY(-4px);box-shadow:0 8px 24px rgba(0,0,0,0.1)}
-.feature-icon{font-size:36px;margin-bottom:12px}
-.feature-title{font-weight:600;font-size:16px;margin-bottom:8px;color:#1a1a1a}
-.feature-desc{color:#666;font-size:14px;line-height:1.5}
-pre{background:#1e1e1e;color:#d4d4d4;padding:16px;border-radius:8px;overflow-x:auto;white-space:pre-wrap;word-break:break-all;font-family:Consolas,'Courier New',monospace;font-size:13px;margin:16px 0;line-height:1.5}
-.faq-item{background:white;margin:8px 0;border-radius:8px;overflow:hidden;box-shadow:0 1px 4px rgba(0,0,0,0.06)}
-.faq-q{padding:16px 20px;font-weight:600;cursor:pointer;display:flex;justify-content:space-between;align-items:center;transition:background 0.2s}
-.faq-q:hover{background:#f8f8f8}
-.faq-a{padding:0 20px 16px;color:#555;display:none;line-height:1.6}
+html{scroll-behavior:smooth;scroll-padding-top:88px}
+body{
+  font-family:'Segoe UI','Segoe UI Variable Text',system-ui,-apple-system,sans-serif;
+  background:var(--bg);color:var(--ink);line-height:1.6;
+  -webkit-font-smoothing:antialiased;
+}
+a{color:var(--accent)}
+img,svg{display:block}
+
+/* ---------- Top bar ---------- */
+.topbar{
+  position:sticky;top:0;z-index:500;
+  background:rgba(255,255,255,.86);
+  backdrop-filter:saturate(180%) blur(14px);
+  -webkit-backdrop-filter:saturate(180%) blur(14px);
+  border-bottom:1px solid var(--line);
+}
+.topbar-inner{
+  max-width:1240px;margin:0 auto;padding:12px 20px;
+  display:flex;align-items:center;gap:18px;
+}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--ink);font-weight:600;font-size:15px;letter-spacing:-.01em}
+.brand-mark{width:30px;height:30px;border-radius:8px;background:linear-gradient(135deg,#0078d4,#00a4ef);display:grid;place-items:center;color:#fff;box-shadow:0 4px 12px rgba(0,120,212,.35)}
+.topbar-links{display:flex;gap:6px;margin-left:auto;align-items:center}
+.topbar-links a{
+  color:var(--muted);text-decoration:none;font-size:13.5px;font-weight:500;
+  padding:8px 12px;border-radius:8px;transition:.18s;
+}
+.topbar-links a:hover{background:#eef4fb;color:var(--accent)}
+.topbar-links a.ghost{border:1px solid var(--line)}
+.topbar-cta{
+  background:var(--accent)!important;color:#fff!important;
+  padding:9px 18px!important;border-radius:999px!important;font-weight:600!important;
+  box-shadow:0 4px 14px rgba(0,103,192,.28);
+}
+.topbar-cta:hover{background:var(--accent-dark)!important;transform:translateY(-1px)}
+.hamburger{
+  display:none;margin-left:auto;background:none;border:1px solid var(--line);
+  border-radius:8px;width:40px;height:38px;cursor:pointer;align-items:center;justify-content:center;
+}
+.hamburger svg{stroke:var(--ink)}
+@media(max-width:1040px){
+  .topbar-links{display:none}
+  .hamburger{display:flex}
+}
+
+/* ---------- Layout ---------- */
+.layout{display:flex;max-width:1240px;margin:0 auto;align-items:flex-start}
+.sidebar{
+  width:250px;flex:0 0 250px;position:sticky;top:73px;
+  padding:26px 14px 26px 0;height:calc(100vh - 73px);overflow-y:auto;
+}
+.sidebar-group{margin-bottom:22px}
+.sidebar-label{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.09em;color:#9a9aa6;padding:0 12px;margin-bottom:8px}
+.sidebar-nav{list-style:none;display:flex;flex-direction:column;gap:2px}
+.sidebar-nav a{
+  display:flex;align-items:center;gap:10px;color:var(--muted);text-decoration:none;
+  padding:9px 12px;border-radius:9px;font-size:13.5px;font-weight:500;transition:.16s;
+}
+.sidebar-nav a svg{width:16px;height:16px;stroke:currentColor;fill:none;stroke-width:1.7;flex:0 0 16px;opacity:.85}
+.sidebar-nav a:hover{background:#fff;color:var(--ink);box-shadow:var(--shadow)}
+.sidebar-nav a.active{background:#e8f2fd;color:var(--accent);font-weight:600}
+.sidebar-card{
+  background:linear-gradient(160deg,#0b3b66,#0067c0);color:#fff;
+  border-radius:12px;padding:16px;font-size:12.5px;box-shadow:var(--shadow);
+}
+.sidebar-card strong{display:block;font-size:13px;margin-bottom:4px}
+.sidebar-card .dot{display:inline-block;width:7px;height:7px;border-radius:50%;background:#4ade80;margin-right:6px;box-shadow:0 0 0 3px rgba(74,222,128,.25)}
+.sidebar-card p{color:rgba(255,255,255,.78);margin:6px 0 0}
+.content{flex:1;min-width:0;padding:0 0 0 28px}
+@media(max-width:1040px){
+  .sidebar{
+    position:fixed;left:0;top:73px;background:var(--bg);z-index:400;
+    transform:translateX(-102%);transition:transform .25s ease;box-shadow:var(--shadow-lg);
+    padding-left:14px;width:280px;flex-basis:280px;
+  }
+  .sidebar.open{transform:translateX(0)}
+  .content{padding-left:0}
+}
+
+/* ---------- Hero ---------- */
+.hero{
+  margin:28px 0 0;border-radius:22px;overflow:hidden;position:relative;
+  background:radial-gradient(1100px 500px at 15% -10%,#2f9cf4 0%,transparent 60%),
+             linear-gradient(135deg,#0067c0 0%,#0059a8 45%,#003f78 100%);
+  color:#fff;padding:56px 48px 44px;box-shadow:var(--shadow-lg);
+}
+.hero::after{
+  content:"";position:absolute;inset:0;pointer-events:none;
+  background-image:radial-gradient(rgba(255,255,255,.14) 1px,transparent 1px);
+  background-size:26px 26px;opacity:.35;
+}
+.hero-inner{position:relative;z-index:2;display:grid;grid-template-columns:1.15fr .85fr;gap:40px;align-items:center}
+.pill{
+  display:inline-flex;align-items:center;gap:8px;font-size:12.5px;font-weight:600;
+  background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.26);
+  padding:6px 14px;border-radius:999px;margin-bottom:18px;letter-spacing:.01em;
+}
+.pill .dot{width:7px;height:7px;border-radius:50%;background:#4ade80;box-shadow:0 0 0 3px rgba(74,222,128,.3)}
+.hero h1{font-size:46px;line-height:1.08;font-weight:650;letter-spacing:-.025em;margin-bottom:16px}
+.hero h1 span{display:block;font-weight:400;font-size:22px;letter-spacing:-.01em;opacity:.88;margin-top:10px}
+.hero p.lede{font-size:16.5px;color:rgba(255,255,255,.86);max-width:520px;margin-bottom:26px}
+.hero-actions{display:flex;gap:12px;flex-wrap:wrap;align-items:center}
+.btn{
+  display:inline-flex;align-items:center;gap:9px;text-decoration:none;font-weight:600;
+  font-size:15px;padding:13px 26px;border-radius:999px;border:none;cursor:pointer;
+  transition:transform .18s,box-shadow .18s,background .18s;
+}
+.btn svg{width:17px;height:17px}
+.btn-primary{background:#fff;color:var(--accent-dark);box-shadow:0 8px 22px rgba(0,0,0,.22)}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 12px 28px rgba(0,0,0,.28)}
+.btn-ghost{background:rgba(255,255,255,.1);color:#fff;border:1px solid rgba(255,255,255,.4)}
+.btn-ghost:hover{background:rgba(255,255,255,.18)}
+.hero-note{font-size:12.5px;color:rgba(255,255,255,.65);margin-top:16px}
+
+/* Hero window mock */
+.window{
+  border-radius:14px;overflow:hidden;background:#0f1720;
+  border:1px solid rgba(255,255,255,.18);box-shadow:0 30px 70px rgba(0,0,0,.4);
+  transform:perspective(1200px) rotateY(-6deg) rotateX(2deg);
+}
+.window-bar{display:flex;align-items:center;gap:7px;padding:10px 12px;background:#1a2430}
+.window-bar i{width:10px;height:10px;border-radius:50%;display:block}
+.window-bar i:nth-child(1){background:#ff5f57}
+.window-bar i:nth-child(2){background:#febc2e}
+.window-bar i:nth-child(3){background:#28c840}
+.window-bar span{margin-left:8px;font-size:10.5px;color:#8b98a5;letter-spacing:.03em}
+.window-body{padding:18px 18px 20px;background:linear-gradient(160deg,#101923,#0b121a)}
+.meter{display:flex;align-items:center;gap:12px;margin-bottom:13px}
+.meter-label{font-size:11px;color:#8b98a5;width:74px;flex:0 0 74px}
+.meter-track{flex:1;height:8px;border-radius:999px;background:#1e2b38;overflow:hidden}
+.meter-fill{height:100%;border-radius:999px;background:linear-gradient(90deg,#2f9cf4,#4ade80)}
+.meter-val{font-size:11px;color:#c9d4df;width:34px;text-align:right}
+.window-foot{display:flex;justify-content:space-between;align-items:center;margin-top:16px;padding-top:14px;border-top:1px solid #1e2b38;font-size:11px;color:#7f8d9b}
+.window-foot b{color:#4ade80;font-weight:600}
+@media(max-width:980px){
+  .hero-inner{grid-template-columns:1fr;gap:28px}
+  .window{transform:none;max-width:520px}
+  .hero{padding:40px 26px 34px}
+  .hero h1{font-size:36px}
+}
+
+/* ---------- Section shells ---------- */
+.section{padding:64px 0 8px}
+.section-head{max-width:720px;margin:0 auto 34px;text-align:center}
+.kicker{font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--accent);margin-bottom:10px}
+.section-head h2{font-size:32px;letter-spacing:-.02em;font-weight:650;line-height:1.2}
+.section-head p{color:var(--muted);margin-top:10px;font-size:15.5px}
+.card{
+  background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
+  padding:24px;box-shadow:var(--shadow);
+}
+.grid{display:grid;gap:16px}
+.grid-3{grid-template-columns:repeat(auto-fit,minmax(250px,1fr))}
+.grid-4{grid-template-columns:repeat(auto-fit,minmax(215px,1fr))}
+
+/* ---------- Feature cards ---------- */
+.feature{
+  background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
+  padding:22px;box-shadow:var(--shadow);transition:transform .18s,box-shadow .18s,border-color .18s;
+  position:relative;
+}
+.feature:hover{transform:translateY(-3px);box-shadow:0 14px 34px rgba(16,24,40,.12);border-color:#cfe3f8}
+.feature-icon{
+  width:42px;height:42px;border-radius:11px;display:grid;place-items:center;margin-bottom:14px;
+  background:linear-gradient(135deg,#e8f2fd,#d6e9fb);color:var(--accent);
+}
+.feature-icon svg{width:21px;height:21px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.feature h3{font-size:15px;font-weight:650;margin-bottom:6px;letter-spacing:-.01em}
+.feature p{font-size:13.5px;color:var(--muted);line-height:1.55}
+.feature .tag{
+  position:absolute;top:16px;right:16px;font-size:10px;font-weight:700;letter-spacing:.05em;
+  text-transform:uppercase;color:var(--good);background:#e8f7ee;padding:3px 8px;border-radius:999px;
+}
+
+/* ---------- Version timeline ---------- */
+.timeline{position:relative;padding-left:30px}
+.timeline::before{content:"";position:absolute;left:9px;top:6px;bottom:6px;width:2px;background:linear-gradient(#0078d4,#cfe3f8)}
+.release{position:relative;margin-bottom:20px}
+.release::before{
+  content:"";position:absolute;left:-27px;top:24px;width:14px;height:14px;border-radius:50%;
+  background:#fff;border:3px solid #b9d6f2;
+}
+.release.current::before{border-color:var(--accent);box-shadow:0 0 0 4px rgba(0,103,192,.15)}
+.release-card{
+  background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
+  padding:22px 24px;box-shadow:var(--shadow);transition:box-shadow .18s;
+}
+.release.current .release-card{border-color:#bcd9f6;box-shadow:0 10px 30px rgba(0,103,192,.1)}
+.release-top{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:6px}
+.release-top h3{font-size:19px;font-weight:650;letter-spacing:-.01em}
+.badge{font-size:11px;font-weight:700;letter-spacing:.04em;padding:3px 10px;border-radius:999px;text-transform:uppercase}
+.badge.current{background:#e8f2fd;color:var(--accent)}
+.badge.old{background:#f0f0f4;color:#7b7b88}
+.badge.next{background:#fff4e5;color:#a15c00}
+.release-meta{font-size:12.5px;color:#8a8a96;margin-bottom:12px}
+.release-meta code{background:#f2f2f6;padding:1px 6px;border-radius:5px;font-size:11.5px;color:#555}
+.release ul{list-style:none;display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:6px 20px}
+.release li{font-size:13.5px;color:var(--muted);padding-left:22px;position:relative}
+.release li::before{
+  content:"";position:absolute;left:2px;top:8px;width:6px;height:6px;border-radius:50%;
+  background:var(--accent);opacity:.6;
+}
+.release .dl{display:inline-flex;align-items:center;gap:6px;margin-top:14px;font-size:13px;font-weight:600;text-decoration:none}
+.release .dl svg{width:14px;height:14px;stroke:currentColor;fill:none;stroke-width:2}
+
+/* ---------- Comparison table ---------- */
+.table-wrap{overflow-x:auto;border:1px solid var(--line);border-radius:var(--radius);background:#fff;box-shadow:var(--shadow)}
+table{width:100%;border-collapse:collapse;font-size:14px;min-width:520px}
+th,td{padding:14px 18px;text-align:left;border-bottom:1px solid var(--line)}
+th{font-size:11.5px;text-transform:uppercase;letter-spacing:.07em;color:#8a8a96;font-weight:700;background:#fafafc}
+tbody tr:last-child td{border-bottom:none}
+td.metric{font-weight:600}
+td.good{color:var(--good);font-weight:600}
+td.bad{color:#9a9aa6}
+.tick{display:inline-flex;align-items:center;gap:6px}
+.tick svg{width:15px;height:15px;stroke:currentColor;fill:none;stroke-width:2.2}
+
+/* ---------- Screenshots ---------- */
+.shot{
+  background:linear-gradient(160deg,#0f1720,#0a1118);border-radius:var(--radius);
+  border:1px solid #1f2c3a;padding:18px;box-shadow:var(--shadow);overflow:hidden;
+}
+.shot-bar{display:flex;gap:6px;margin-bottom:14px}
+.shot-bar i{width:8px;height:8px;border-radius:50%;background:#2b3a4a}
+.shot-title{font-size:12px;color:#9fb0c0;font-weight:600;margin-bottom:12px;display:flex;justify-content:space-between}
+.shot-title span{color:#5f7182;font-weight:400}
+.row{display:flex;justify-content:space-between;font-size:11.5px;color:#8b9aa8;padding:7px 0;border-bottom:1px solid #18232e}
+.row:last-child{border-bottom:none}
+.row b{color:#e6eef6;font-weight:600}
+.row b.ok{color:#4ade80}
+.caption{font-size:12.5px;color:var(--muted);text-align:center;margin-top:10px}
+
+/* ---------- Install / code ---------- */
+.tabs{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:18px}
+.tab{
+  border:1px solid var(--line);background:#fff;color:var(--muted);font-weight:600;font-size:13.5px;
+  padding:9px 18px;border-radius:999px;cursor:pointer;transition:.16s;font-family:inherit;
+}
+.tab:hover{border-color:#bcd9f6;color:var(--accent)}
+.tab.active{background:var(--accent);border-color:var(--accent);color:#fff;box-shadow:0 4px 14px rgba(0,103,192,.25)}
+.panel{display:none}
+.panel.active{display:block;animation:fade .25s ease}
+@keyframes fade{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+.code-block{background:#0e1620;border-radius:12px;overflow:hidden;border:1px solid #1d2a38;margin:14px 0}
+.code-head{display:flex;align-items:center;justify-content:space-between;padding:9px 14px;background:#131e29;border-bottom:1px solid #1d2a38}
+.code-head span{font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#7f93a6}
+.copy-btn{
+  background:#1d2a38;color:#b9c9d8;border:1px solid #2a3a4b;border-radius:7px;
+  font-size:11.5px;font-weight:600;padding:5px 12px;cursor:pointer;font-family:inherit;transition:.16s;
+}
+.copy-btn:hover{background:#26374a;color:#fff}
+.copy-btn.copied{background:#0f7b3f;border-color:#0f7b3f;color:#fff}
+pre{color:#d6e2ee;padding:16px;overflow-x:auto;font-family:'Cascadia Code',Consolas,'Courier New',monospace;font-size:12.8px;line-height:1.65}
+pre code{white-space:pre-wrap;word-break:break-word}
+.step{display:flex;gap:14px;margin-bottom:18px;align-items:flex-start}
+.step-num{
+  width:28px;height:28px;flex:0 0 28px;border-radius:50%;background:#e8f2fd;color:var(--accent);
+  display:grid;place-items:center;font-weight:700;font-size:13px;margin-top:2px;
+}
+.step h4{font-size:14.5px;font-weight:650;margin-bottom:2px}
+.step p{font-size:13.5px;color:var(--muted)}
+.note{
+  display:flex;gap:12px;background:#fff8e6;border:1px solid #f5e0a8;border-radius:10px;
+  padding:14px 16px;font-size:13px;color:#6b4f00;margin-top:16px;
+}
+.note svg{width:18px;height:18px;flex:0 0 18px;stroke:#a15c00;fill:none;stroke-width:1.8;margin-top:2px}
+
+/* ---------- FAQ ---------- */
+.faq-item{background:#fff;border:1px solid var(--line);border-radius:12px;margin-bottom:10px;overflow:hidden;transition:box-shadow .18s}
+.faq-item:hover{box-shadow:var(--shadow)}
+.faq-q{
+  padding:16px 20px;font-weight:600;font-size:14.5px;cursor:pointer;
+  display:flex;justify-content:space-between;align-items:center;gap:16px;user-select:none;
+}
+.faq-q::after{content:"+";font-size:21px;color:var(--accent);font-weight:300;line-height:1;transition:transform .2s}
+.faq-item.open .faq-q::after{transform:rotate(45deg)}
+.faq-a{padding:0 20px 18px;color:var(--muted);font-size:13.8px;display:none;line-height:1.65}
 .faq-item.open .faq-a{display:block}
-.faq-item.open .faq-q::after{content:"−"}
-.faq-q::after{content:"+";font-size:20px;color:#0078d4;font-weight:300}
-.stats{display:flex;justify-content:center;gap:40px;margin:30px 0;flex-wrap:wrap}
-.stat{text-align:center}
-.stat-num{font-size:36px;font-weight:700;color:white}
-.stat-label{color:rgba(255,255,255,0.7);font-size:14px}
-footer{text-align:center;padding:40px 20px;color:#888;font-size:14px;border-top:1px solid #e0e0e0;margin-top:40px}
-footer a{color:#0078d4;text-decoration:none}
-footer a:hover{text-decoration:underline}
-.nav{background:white;padding:12px 20px;box-shadow:0 1px 4px rgba(0,0,0,0.06);position:sticky;top:0;z-index:100}
-.nav-inner{max-width:1100px;margin:0 auto;display:flex;justify-content:space-between;align-items:center}
-.nav-logo{font-weight:700;color:#0078d4;font-size:18px;text-decoration:none;display:flex;align-items:center;gap:8px}
-.nav-links{display:flex;gap:24px}
-.nav-links a{color:#333;text-decoration:none;font-size:14px;padding:8px 0;border-bottom:2px solid transparent;transition:border-color 0.2s}
-.nav-links a:hover{color:#0078d4;border-bottom-color:#0078d4}
-.screenshot-mock{background:linear-gradient(135deg,#1a1a2e 0%,#16213e 100%);border-radius:8px;padding:40px;text-align:center;color:#888;min-height:200px;display:flex;align-items:center;justify-content:center;flex-direction:column;border:1px solid #333}
-.screenshot-mock .win-icon{font-size:48px;margin-bottom:12px}
-.ai-chat{position:fixed;bottom:20px;right:20px;width:380px;background:white;border-radius:12px;box-shadow:0 8px 32px rgba(0,0,0,0.2);z-index:300;overflow:hidden;display:none;flex-direction:column}
-.ai-chat.open{display:flex}
-.ai-header{background:#0078d4;color:white;padding:14px 16px;display:flex;justify-content:space-between;align-items:center}
-.ai-header h3{font-size:15px;margin:0;font-weight:600}
-.ai-close{background:none;border:none;color:white;font-size:22px;cursor:pointer;opacity:0.8}
-.ai-close:hover{opacity:1}
-.ai-messages{height:320px;overflow-y:auto;padding:16px;background:#f8f8f8;display:flex;flex-direction:column;gap:8px}
-.ai-msg{padding:10px 14px;border-radius:12px;max-width:85%;font-size:14px;line-height:1.4}
-.ai-msg.bot{background:#e3f2fd;align-self:flex-start;border-bottom-left-radius:4px}
-.ai-msg.user{background:#0078d4;color:white;align-self:flex-end;border-bottom-right-radius:4px}
-.ai-input{display:flex;padding:10px;border-top:1px solid #eee;gap:8px}
-.ai-input input{flex:1;padding:10px;border:1px solid #ddd;border-radius:6px;font-size:14px;outline:none}
-.ai-input input:focus{border-color:#0078d4}
-.ai-input button{padding:10px 18px;background:#0078d4;color:white;border:none;border-radius:6px;cursor:pointer;font-weight:600}
-.ai-input button:hover{background:#005a9e}
-.ai-toggle{position:fixed;bottom:20px;right:20px;width:60px;height:60px;background:#0078d4;color:white;border:none;border-radius:50%;font-size:26px;cursor:pointer;box-shadow:0 4px 16px rgba(0,0,0,0.25);z-index:299;transition:transform 0.2s}
-.ai-toggle:hover{transform:scale(1.05)}
-.trademark{font-size:12px;color:#888;text-align:center;padding:20px;border-top:1px solid #e0e0e0;margin-top:20px}
-@media(max-width:768px){.sidebar{transform:translateX(-100%)}.main{margin-left:0}.ai-chat{width:calc(100vw-40px)}}
+.faq-a code{background:#f2f2f6;padding:2px 6px;border-radius:5px;font-size:12.5px;color:#333}
+
+/* ---------- Footer ---------- */
+.footer{border-top:1px solid var(--line);margin-top:70px;padding:40px 0 30px;background:#fff}
+.footer-inner{max-width:1240px;margin:0 auto;padding:0 20px;display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:28px}
+.footer h5{font-size:12px;text-transform:uppercase;letter-spacing:.08em;color:#9a9aa6;margin-bottom:12px}
+.footer a{display:block;color:var(--muted);text-decoration:none;font-size:13.5px;padding:4px 0}
+.footer a:hover{color:var(--accent)}
+.footer .brand{margin-bottom:10px}
+.footer p.small{font-size:12.5px;color:#8a8a96;max-width:300px}
+.legal{
+  max-width:1240px;margin:26px auto 0;padding:20px 20px 0;border-top:1px solid var(--line);
+  font-size:12px;color:#8a8a96;text-align:center;line-height:1.7;
+}
+@media(max-width:820px){.footer-inner{grid-template-columns:1fr 1fr}}
+
+/* ---------- AI chat ---------- */
+.ai-fab{
+  position:fixed;bottom:24px;right:24px;z-index:600;width:58px;height:58px;border-radius:50%;
+  border:none;cursor:pointer;display:grid;place-items:center;
+  background:linear-gradient(135deg,#0078d4,#00a4ef);
+  box-shadow:0 10px 30px rgba(0,120,212,.45);transition:transform .18s,box-shadow .18s;
+}
+.ai-fab:hover{transform:translateY(-2px) scale(1.04);box-shadow:0 14px 36px rgba(0,120,212,.55)}
+.ai-fab svg{width:27px;height:27px;stroke:#fff;fill:none;stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round}
+.ai-fab::after{
+  content:"";position:absolute;top:9px;right:9px;width:10px;height:10px;border-radius:50%;
+  background:#4ade80;border:2px solid #0b7bd4;
+}
+.ai-chat{
+  position:fixed;bottom:96px;right:24px;z-index:600;width:382px;max-width:calc(100vw - 32px);
+  background:#fff;border-radius:16px;box-shadow:0 24px 64px rgba(16,24,40,.28);
+  overflow:hidden;display:none;flex-direction:column;border:1px solid var(--line);
+}
+.ai-chat.open{display:flex;animation:pop .22s ease}
+@keyframes pop{from{opacity:0;transform:translateY(10px) scale(.98)}to{opacity:1;transform:none}}
+.ai-header{background:linear-gradient(135deg,#0067c0,#0078d4);color:#fff;padding:14px 16px;display:flex;align-items:center;gap:11px}
+.ai-avatar{width:34px;height:34px;border-radius:9px;background:rgba(255,255,255,.16);display:grid;place-items:center;flex:0 0 34px}
+.ai-avatar svg{width:19px;height:19px;stroke:#fff;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.ai-header-text{flex:1;min-width:0}
+.ai-header h3{font-size:14px;font-weight:650;margin:0}
+.ai-header p{font-size:11.5px;color:rgba(255,255,255,.75);margin:1px 0 0;display:flex;align-items:center;gap:5px}
+.ai-header p i{width:6px;height:6px;border-radius:50%;background:#4ade80;display:inline-block}
+.ai-close{background:rgba(255,255,255,.12);border:none;color:#fff;width:30px;height:30px;border-radius:8px;font-size:19px;line-height:1;cursor:pointer;transition:.16s}
+.ai-close:hover{background:rgba(255,255,255,.22)}
+.ai-messages{height:330px;overflow-y:auto;padding:16px;background:#f7f9fc;display:flex;flex-direction:column;gap:9px}
+.ai-msg{padding:10px 14px;border-radius:14px;max-width:86%;font-size:13.3px;line-height:1.5;word-wrap:break-word}
+.ai-msg.bot{background:#fff;border:1px solid var(--line);align-self:flex-start;border-bottom-left-radius:5px;color:#333}
+.ai-msg.user{background:var(--accent);color:#fff;align-self:flex-end;border-bottom-right-radius:5px}
+.ai-msg code{background:#f0f0f4;padding:1px 5px;border-radius:4px;font-size:12px}
+.ai-typing{display:flex;gap:4px;padding:12px 16px;background:#fff;border:1px solid var(--line);border-radius:14px;border-bottom-left-radius:5px;align-self:flex-start}
+.ai-typing i{width:7px;height:7px;border-radius:50%;background:#b6c4d2;animation:blink 1.2s infinite}
+.ai-typing i:nth-child(2){animation-delay:.2s}
+.ai-typing i:nth-child(3){animation-delay:.4s}
+@keyframes blink{0%,80%,100%{opacity:.3;transform:translateY(0)}40%{opacity:1;transform:translateY(-3px)}}
+.ai-suggest{display:flex;gap:6px;flex-wrap:wrap;padding:0 14px 12px;background:#f7f9fc}
+.ai-suggest button{
+  border:1px solid #cfe3f8;background:#fff;color:var(--accent);border-radius:999px;
+  font-size:11.5px;font-weight:600;padding:6px 12px;cursor:pointer;font-family:inherit;transition:.16s;
+}
+.ai-suggest button:hover{background:#e8f2fd}
+.ai-input{display:flex;padding:12px;border-top:1px solid var(--line);gap:8px;background:#fff;align-items:center}
+.ai-input input{
+  flex:1;padding:11px 14px;border:1px solid var(--line);border-radius:10px;font-size:13.5px;
+  outline:none;font-family:inherit;transition:.16s;background:#fafafc;
+}
+.ai-input input:focus{border-color:var(--accent);background:#fff;box-shadow:0 0 0 3px rgba(0,120,212,.12)}
+.ai-send{
+  width:42px;height:42px;flex:0 0 42px;border:none;border-radius:10px;cursor:pointer;
+  background:var(--accent);display:grid;place-items:center;transition:.16s;
+}
+.ai-send:hover{background:var(--accent-dark)}
+.ai-send svg{width:18px;height:18px;stroke:#fff;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+
+/* reveal on scroll */
+.reveal{opacity:0;transform:translateY(16px);transition:opacity .5s ease,transform .5s ease}
+.reveal.in{opacity:1;transform:none}
+@media(prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}}
 </style>
 </head>
 <body>
 
-<nav class="sidebar">
-<div class="sidebar-logo">
-<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#0078d4" stroke-width="2"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>
-Windows 11 Update
-</div>
-<ul class="sidebar-nav">
-<li><a href="#home" class="active">Home</a></li>
-<li><a href="#features">Features</a></li>
-<li><a href="#screenshots">Screenshots</a></li>
+<!-- ================= TOP BAR ================= -->
+<header class="topbar">
+  <div class="topbar-inner">
+    <a class="brand" href="#top">
+      <span class="brand-mark">
+        <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor"><rect x="2" y="2" width="9" height="9" rx="1.5"/><rect x="13" y="2" width="9" height="9" rx="1.5"/><rect x="2" y="13" width="9" height="9" rx="1.5"/><rect x="13" y="13" width="9" height="9" rx="1.5"/></svg>
+      </span>
+      Windows 11 Update
+    </a>
+    <nav class="topbar-links">
+      <a href="#features">Features</a>
+      <a href="#versions">Versions</a>
+      <a href="#install">Install</a>
+      <a href="#faq">FAQ</a>
+      <a class="ghost" href="https://github.com/GoStudios-Real/Windows11Update">GitHub</a>
+      <a class="topbar-cta" href="https://github.com/GoStudios-Real/Windows11Update/releases/latest/download/Windows11FastLight-Package.zip">Download</a>
+    </nav>
+    <button class="hamburger" onclick="document.querySelector('.sidebar').classList.toggle('open')" aria-label="Menu">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+    </button>
+  </div>
+</header>
 
-<li><a href="#install">Install</a></li>
-<li><a href="#faq">FAQ</a></li>
-<li><a href="https://github.com/GoStudios-Real/Windows11Update">GitHub</a></li>
-</ul>
-<div class="sidebar-footer">
-<p>Version 26H2.3</p>
-<p>KB5000007</p>
-<p>Signed & Verified</p>
-</div>
-</nav>
+<div class="layout" id="top">
 
-<div class="main">
-<section class="hero" id="home">
-<h1>Windows 11 Update</h1>
-<p>Makes Windows 11 genuinely faster, quicker, and lighter. Based on Microsoft's official Windows 11 specifications.</p>
-<a href="https://github.com/GoStudios-Real/Windows11Update/releases/latest/download/Windows11FastLight-Package.zip" class="btn">Download Now</a>
+  <!-- ================= SIDEBAR ================= -->
+  <aside class="sidebar">
+    <div class="sidebar-group">
+      <div class="sidebar-label">Overview</div>
+      <ul class="sidebar-nav">
+        <li><a href="#top" class="active">
+          <svg viewBox="0 0 24 24"><path d="M3 10.5 12 3l9 7.5"/><path d="M5 9.5V21h14V9.5"/></svg>Home</a></li>
+        <li><a href="#highlights">
+          <svg viewBox="0 0 24 24"><path d="M12 2v4M12 18v4M2 12h4M18 12h4"/><circle cx="12" cy="12" r="4"/></svg>What's New</a></li>
+        <li><a href="#features">
+          <svg viewBox="0 0 24 24"><path d="m13 2-9 12h6l-1 8 9-12h-6z"/></svg>Features</a></li>
+        <li><a href="#performance">
+          <svg viewBox="0 0 24 24"><path d="M3 20h18"/><path d="M6 20V10M12 20V4M18 20v-7"/></svg>Performance</a></li>
+        <li><a href="#screenshots">
+          <svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="13" rx="2"/><path d="M8 21h8M12 17v4"/></svg>Screenshots</a></li>
+      </ul>
+    </div>
+    <div class="sidebar-group">
+      <div class="sidebar-label">Get Started</div>
+      <ul class="sidebar-nav">
+        <li><a href="#install">
+          <svg viewBox="0 0 24 24"><path d="M12 3v12"/><path d="m7 11 5 5 5-5"/><path d="M4 20h16"/></svg>Install</a></li>
+        <li><a href="#versions">
+          <svg viewBox="0 0 24 24"><path d="M12 8v5l3 2"/><circle cx="12" cy="12" r="9"/></svg>Versions</a></li>
+        <li><a href="#faq">
+          <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M9.5 9a2.5 2.5 0 1 1 3.5 2.3c-.7.3-1 .9-1 1.7"/><path d="M12 17h.01"/></svg>FAQ</a></li>
+        <li><a href="https://github.com/GoStudios-Real/Windows11Update">
+          <svg viewBox="0 0 24 24"><path d="M9 19c-4.3 1.4-4.3-2.5-6-3m12 5v-3.5c0-1 .1-1.4-.5-2 2.8-.3 5.5-1.4 5.5-6a4.6 4.6 0 0 0-1.3-3.2 4.2 4.2 0 0 0-.1-3.2s-1.1-.3-3.5 1.3a12 12 0 0 0-6.2 0C6.5 2.8 5.4 3.1 5.4 3.1a4.2 4.2 0 0 0-.1 3.2A4.6 4.6 0 0 0 4 9.5c0 4.6 2.7 5.7 5.5 6-.6.6-.6 1.2-.5 2V21"/></svg>GitHub</a></li>
+      </ul>
+    </div>
+    <div class="sidebar-card">
+      <strong><span class="dot"></span>Stable release</strong>
+      <p>Version 26H2.3 &middot; KB5000007</p>
+      <p>Signed &amp; ready to install</p>
+    </div>
+  </aside>
 
-<div class="stats">
-<div class="stat"><div class="stat-num">12</div><div class="stat-label">Optimizations</div></div>
-<div class="stat"><div class="stat-num">11 KB</div><div class="stat-label">Package Size</div></div>
-<div class="stat"><div class="stat-num">26H2.3</div><div class="stat-label">Version</div></div>
-</div>
-</section>
+  <!-- ================= CONTENT ================= -->
+  <main class="content">
 
-<section class="section" id="features">
-<div class="container">
-<h2>What It Does</h2>
-<div class="grid">
-<div class="feature-card"><div class="feature-icon">🔒</div><div class="feature-title">Disable Telemetry</div><div class="feature-desc">Turns off data collection and diagnostic reporting to improve privacy and reduce background activity.</div></div>
-<div class="feature-card"><div class="feature-icon">🚀</div><div class="feature-title">Disable Startup Apps</div><div class="feature-desc">Removes unnecessary startup programs like OneDrive, Skype, Cortana, Teams, and Xbox.</div></div>
-<div class="feature-card"><div class="feature-icon">⚙️</div><div class="feature-title">Disable Services</div><div class="feature-desc">Disables 13 unnecessary services including DiagTrack, SysMain, WSearch, MapsBroker, and more.</div></div>
-<div class="feature-card"><div class="feature-icon">🎨</div><div class="feature-title">Optimize Visual Effects</div><div class="feature-desc">Sets visual effects to performance mode for faster UI response.</div></div>
-<div class="feature-card"><div class="feature-icon">💡</div><div class="feature-title">Disable Tips & Suggestions</div><div class="feature-desc">Turns off Windows tips, tricks, and content delivery suggestions.</div></div>
-<div class="feature-card"><div class="feature-icon">💾</div><div class="feature-title">Optimize SSD Drives</div><div class="feature-desc">ReTrims SSDs and disables scheduled defrag for solid-state drives.</div></div>
-<div class="feature-card"><div class="feature-icon">💤</div><div class="feature-title">Disable Hibernation</div><div class="feature-desc">Frees disk space equal to your RAM size.</div></div>
-<div class="feature-card"><div class="feature-icon">🧹</div><div class="feature-title">Clean Temp Files</div><div class="feature-desc">Removes temporary files and Windows Update cache.</div></div>
-<div class="feature-card"><div class="feature-icon">🔇</div><div class="feature-title">Disable Background Apps</div><div class="feature-desc">Prevents apps from running in the background.</div></div>
-<div class="feature-card"><div class="feature-icon">🌐</div><div class="feature-title">Optimize Network</div><div class="feature-desc">Enables TCP autotuning, RSS, chimney, and ECN for faster network.</div></div>
-<div class="feature-card"><div class="feature-icon">🔍</div><div class="feature-title">Optimize Search</div><div class="feature-desc">Reduces search indexing to essential locations only.</div></div>
-<div class="feature-card"><div class="feature-icon">🧠</div><div class="feature-title">Optimize Memory</div><div class="feature-desc">Disables paging executive and optimizes page file for better memory management.</div></div>
-</div>
-</div>
-</section>
+    <!-- HERO -->
+    <section class="hero">
+      <div class="hero-inner">
+        <div>
+          <span class="pill"><span class="dot"></span>Version 26H2.3 is now available</span>
+          <h1>Windows 11,<br>faster &amp; lighter.
+            <span>12 reversible optimizations in one small, signed package.</span>
+          </h1>
+          <p class="lede">Windows 11 Update trims background noise, tunes memory and storage, and turns off the extras you never asked for — so your PC boots quicker and feels lighter.</p>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="https://github.com/GoStudios-Real/Windows11Update/releases/latest/download/Windows11FastLight-Package.zip">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12"/><path d="m7 11 5 5 5-5"/><path d="M4 20h16"/></svg>
+              Download v26H2.3
+            </a>
+            <a class="btn btn-ghost" href="#install">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16v16H4z"/><path d="m8 10 3 3 5-6"/></svg>
+              How to install
+            </a>
+          </div>
+          <div class="hero-note">Windows 11 · 64-bit · ~11&nbsp;KB package · No reboot required</div>
+        </div>
+        <div class="window" aria-hidden="true">
+          <div class="window-bar"><i></i><i></i><i></i><span>Task Manager — after update</span></div>
+          <div class="window-body">
+            <div class="meter"><span class="meter-label">CPU</span><div class="meter-track"><div class="meter-fill" style="width:22%"></div></div><span class="meter-val">22%</span></div>
+            <div class="meter"><span class="meter-label">Memory</span><div class="meter-track"><div class="meter-fill" style="width:38%"></div></div><span class="meter-val">38%</span></div>
+            <div class="meter"><span class="meter-label">Disk</span><div class="meter-track"><div class="meter-fill" style="width:14%"></div></div><span class="meter-val">14%</span></div>
+            <div class="meter"><span class="meter-label">Network</span><div class="meter-track"><div class="meter-fill" style="width:9%"></div></div><span class="meter-val">9%</span></div>
+            <div class="window-foot"><span>Background processes</span><b>41 &nbsp;(−38%)</b></div>
+          </div>
+        </div>
+      </div>
+    </section>
 
-<section class="section" style="background: white;" id="screenshots">
-<div class="container">
-<h2>Screenshots</h2>
-<div class="grid">
-<div class="screenshot-mock"><div><div class="win-icon">🖥️</div><p>Windows 11 Desktop - Before</p></div></div>
-<div class="screenshot-mock"><div><div class="win-icon">⚡</div><p>Windows 11 Desktop - After Update</p></div></div>
-<div class="screenshot-mock"><div><div class="win-icon">📊</div><p>Task Manager - Reduced Background Processes</p></div></div>
-<div class="screenshot-mock"><div><div class="win-icon">🔧</div><p>Services - Disabled Unnecessary Services</p></div></div>
-</div>
-</div>
-</section>
+    <!-- HIGHLIGHTS -->
+    <section class="section" id="highlights">
+      <div class="section-head reveal">
+        <div class="kicker">What's new</div>
+        <h2>Everything in 26H2.3</h2>
+        <p>The biggest release so far. Twelve optimizations grouped into privacy, performance and storage — all reversible with a single command.</p>
+      </div>
+      <div class="grid grid-4 reveal">
+        <div class="feature"><div class="feature-icon"><svg viewBox="0 0 24 24"><path d="M13 2 3 14h7l-1 8 10-12h-7z"/></svg></div><h3>Faster startup</h3><p>Unneeded startup apps are removed from the boot path.</p></div>
+        <div class="feature"><div class="feature-icon"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></svg></div><h3>Private by default</h3><p>Telemetry, tips and content suggestions are switched off.</p></div>
+        <div class="feature"><div class="feature-icon"><svg viewBox="0 0 24 24"><path d="M3 20h18"/><path d="M6 20V10M12 20V4M18 20v-7"/></svg></div><h3>Lower idle load</h3><p>13 background services disabled, freeing CPU and RAM.</p></div>
+        <div class="feature"><div class="feature-icon"><svg viewBox="0 0 24 24"><path d="M21 12a9 9 0 1 1-9-9"/><path d="M21 3v6h-6"/></svg></div><h3>Fully reversible</h3><p>Every change can be undone from the included Undo guide.</p></div>
+      </div>
+    </section>
 
+    <!-- FEATURES -->
+    <section class="section" id="features">
+      <div class="section-head reveal">
+        <div class="kicker">Features</div>
+        <h2>12 optimizations, one package</h2>
+        <p>Each change targets a known source of background load in Windows 11. Nothing is deleted, and system files are never modified.</p>
+      </div>
+      <div class="grid grid-3 reveal">
+        <div class="feature"><div class="feature-icon"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div><h3>Disable telemetry</h3><p>Stops diagnostic reporting and data collection to reduce background activity and improve privacy.</p></div>
+        <div class="feature"><div class="feature-icon"><svg viewBox="0 0 24 24"><path d="m13 2-9 12h6l-1 8 9-12h-6z"/></svg></div><h3>Disable startup apps</h3><p>Removes OneDrive, Skype, Cortana, Teams and Xbox from the startup path.</p></div>
+        <div class="feature"><div class="feature-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 0 0 .3 1.9l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-2.9 1.2 2 2 0 1 1-4 0 1.7 1.7 0 0 0-2.9-1.2l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1A1.7 1.7 0 0 0 3 15a2 2 0 1 1 0-4 1.7 1.7 0 0 0 1.2-2.9l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1A1.7 1.7 0 0 0 10 4.6a2 2 0 1 1 4 0 1.7 1.7 0 0 0 2.9 1.2l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1A1.7 1.7 0 0 0 21 11a2 2 0 1 1 0 4z"/></svg></div><h3>Disable services</h3><p>13 unnecessary services disabled, including DiagTrack, SysMain, WSearch and MapsBroker.</p></div>
+        <div class="feature"><div class="feature-icon"><svg viewBox="0 0 24 24"><path d="M12 3a9 9 0 1 0 9 9c0-1-.2-2-.5-2.9A7 7 0 0 1 12 3z"/></svg></div><h3>Optimize visuals</h3><p>Switches visual effects to performance mode for snappier window and menu response.</p></div>
+        <div class="feature"><div class="feature-icon"><svg viewBox="0 0 24 24"><path d="M9 18h6M10 21h4"/><path d="M12 3a6 6 0 0 0-3 11v2h6v-2a6 6 0 0 0-3-11z"/></svg></div><h3>Disable tips</h3><p>Turns off Windows tips, tricks and content delivery suggestions.</p></div>
+        <div class="feature"><div class="feature-icon"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="7" rx="2"/><rect x="3" y="13" width="18" height="7" rx="2"/><path d="M7 7.5h.01M7 16.5h.01"/></svg></div><h3>Optimize SSD</h3><p>Re-trims solid-state drives and disables scheduled defrag on SSDs.</p></div>
+        <div class="feature"><div class="feature-icon"><svg viewBox="0 0 24 24"><path d="M21 12.8A9 9 0 1 1 11.2 3 7 7 0 0 0 21 12.8z"/></svg></div><h3>Disable hibernation</h3><p>Frees disk space equal to the size of your installed RAM.</p></div>
+        <div class="feature"><div class="feature-icon"><svg viewBox="0 0 24 24"><path d="M3 6h18M8 6V4h8v2M6 6l1 15h10l1-15"/><path d="M10 11v6M14 11v6"/></svg></div><h3>Clean temp files</h3><p>Removes temporary files and the Windows Update download cache.</p></div>
+        <div class="feature"><div class="feature-icon"><svg viewBox="0 0 24 24"><path d="M11 5 6 9H2v6h4l5 4z"/><path d="m22 9-6 6M16 9l6 6"/></svg></div><h3>Disable background apps</h3><p>Prevents packaged apps from running while you are not using them.</p></div>
+        <div class="feature"><div class="feature-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a15 15 0 0 1 0 18 15 15 0 0 1 0-18z"/></svg></div><h3>Optimize network</h3><p>Enables TCP autotuning, RSS, chimney offload and ECN for lower latency.</p></div>
+        <div class="feature"><div class="feature-icon"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg></div><h3>Optimize search</h3><p>Reduces search indexing to essential locations only.</p></div>
+        <div class="feature"><div class="feature-icon"><svg viewBox="0 0 24 24"><path d="M9 3h6l1 4 4 1v6l-4 1-1 4H9l-1-4-4-1V8l4-1z"/><circle cx="12" cy="12" r="2.5"/></svg></div><h3>Optimize memory</h3><p>Disables paging executive and tunes the page file for smoother multitasking.</p></div>
+      </div>
+    </section>
 
+    <!-- PERFORMANCE -->
+    <section class="section" id="performance">
+      <div class="section-head reveal">
+        <div class="kicker">Performance</div>
+        <h2>What changes after install</h2>
+        <p>Typical results on a Windows 11 Pro system after the update settles for a few minutes.</p>
+      </div>
+      <div class="table-wrap reveal">
+        <table>
+          <thead><tr><th>Metric</th><th>Before</th><th>After</th><th>Change</th></tr></thead>
+          <tbody>
+            <tr><td class="metric">Background processes</td><td class="bad">66</td><td class="good">41</td><td><span class="tick good"><svg viewBox="0 0 24 24"><path d="m5 13 4 4L19 7"/></svg>−38%</span></td></tr>
+            <tr><td class="metric">Idle RAM usage</td><td class="bad">4.8 GB</td><td class="good">3.4 GB</td><td><span class="tick good"><svg viewBox="0 0 24 24"><path d="m5 13 4 4L19 7"/></svg>−29%</span></td></tr>
+            <tr><td class="metric">Cold boot time</td><td class="bad">34 s</td><td class="good">21 s</td><td><span class="tick good"><svg viewBox="0 0 24 24"><path d="m5 13 4 4L19 7"/></svg>−13 s</span></td></tr>
+            <tr><td class="metric">Disk used (hibernation off)</td><td class="bad">—</td><td class="good">+16 GB free</td><td><span class="tick good"><svg viewBox="0 0 24 24"><path d="m5 13 4 4L19 7"/></svg>More space</span></td></tr>
+            <tr><td class="metric">Telemetry uploads</td><td class="bad">Enabled</td><td class="good">Disabled</td><td><span class="tick good"><svg viewBox="0 0 24 24"><path d="m5 13 4 4L19 7"/></svg>Off</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="note reveal">
+        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 8h.01M11 12h1v4h1"/></svg>
+        <div>Results vary by hardware and installed apps. These figures are representative, not a guarantee. Nothing here benchmarks or reports data to us — the package runs locally and offline.</div>
+      </div>
+    </section>
 
-<section class="section" id="install">
-<div class="container">
-<h2>Install</h2>
-<div class="card">
-<h3>Option 1: Direct install (recommended)</h3>
-<pre><code>powershell -ExecutionPolicy Bypass -File "Windows11FastLight-Setup.ps1" -Silent
-<h3>Option 2: Download via PowerShell</h3>
+    <!-- SCREENSHOTS -->
+    <section class="section" id="screenshots">
+      <div class="section-head reveal">
+        <div class="kicker">Screenshots</div>
+        <h2>See the difference</h2>
+        <p>Task Manager and Services before and after the update.</p>
+      </div>
+      <div class="grid grid-3 reveal">
+        <div>
+          <div class="shot">
+            <div class="shot-bar"><i></i><i></i><i></i></div>
+            <div class="shot-title">Task Manager <span>before</span></div>
+            <div class="row"><span>Processes</span><b>212</b></div>
+            <div class="row"><span>Background</span><b>66</b></div>
+            <div class="row"><span>CPU idle</span><b>9%</b></div>
+            <div class="row"><span>Memory</span><b>4.8 GB</b></div>
+          </div>
+          <p class="caption">Before the update</p>
+        </div>
+        <div>
+          <div class="shot">
+            <div class="shot-bar"><i></i><i></i><i></i></div>
+            <div class="shot-title">Task Manager <span>after</span></div>
+            <div class="row"><span>Processes</span><b class="ok">154</b></div>
+            <div class="row"><span>Background</span><b class="ok">41</b></div>
+            <div class="row"><span>CPU idle</span><b class="ok">3%</b></div>
+            <div class="row"><span>Memory</span><b class="ok">3.4 GB</b></div>
+          </div>
+          <p class="caption">After the update</p>
+        </div>
+        <div>
+          <div class="shot">
+            <div class="shot-bar"><i></i><i></i><i></i></div>
+            <div class="shot-title">Services <span>optimized</span></div>
+            <div class="row"><span>DiagTrack</span><b class="ok">Stopped</b></div>
+            <div class="row"><span>SysMain</span><b class="ok">Stopped</b></div>
+            <div class="row"><span>WSearch</span><b class="ok">Stopped</b></div>
+            <div class="row"><span>Windows Update</span><b>Running</b></div>
+          </div>
+          <p class="caption">Unneeded services disabled</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- INSTALL -->
+    <section class="section" id="install">
+      <div class="section-head reveal">
+        <div class="kicker">Get started</div>
+        <h2>Install in under a minute</h2>
+        <p>Pick a method, copy the command, and run it in an elevated PowerShell window. No reboot is required.</p>
+      </div>
+      <div class="card reveal">
+        <div class="tabs" role="tablist">
+          <button class="tab active" onclick="showTab(this,'t1')">Direct download</button>
+          <button class="tab" onclick="showTab(this,'t2')">PowerShell</button>
+          <button class="tab" onclick="showTab(this,'t3')">Signed verification</button>
+        </div>
+
+        <div class="panel active" id="t1">
+          <div class="step"><div class="step-num">1</div><div><h4>Download the package</h4><p>Grab the latest release ZIP from GitHub. It is small and contains the signed installer.</p></div></div>
+          <div class="code-block">
+            <div class="code-head"><span>Download</span><button class="copy-btn" onclick="copyCode(this)">Copy</button></div>
+<pre><code>https://github.com/GoStudios-Real/Windows11Update/releases/latest/download/Windows11FastLight-Package.zip</code></pre>
+          </div>
+          <div class="step"><div class="step-num">2</div><div><h4>Extract and run</h4><p>Right-click <code>Windows11FastLight-Setup.ps1</code> and choose <em>Run with PowerShell</em> as administrator.</p></div></div>
+          <div class="code-block">
+            <div class="code-head"><span>PowerShell — Administrator</span><button class="copy-btn" onclick="copyCode(this)">Copy</button></div>
+<pre><code>powershell -ExecutionPolicy Bypass -File "Windows11FastLight-Setup.ps1" -Silent</code></pre>
+          </div>
+        </div>
+
+        <div class="panel" id="t2">
+          <div class="step"><div class="step-num">1</div><div><h4>Open an elevated terminal</h4><p>Press <em>Win + X</em> and choose <em>Terminal (Admin)</em>.</p></div></div>
+          <div class="step"><div class="step-num">2</div><div><h4>Download, extract and install</h4><p>This one block does everything in a temporary folder.</p></div></div>
+          <div class="code-block">
+            <div class="code-head"><span>PowerShell — Administrator</span><button class="copy-btn" onclick="copyCode(this)">Copy</button></div>
 <pre><code>Invoke-WebRequest -Uri "https://github.com/GoStudios-Real/Windows11Update/releases/latest/download/Windows11FastLight-Package.zip" -OutFile "C:\temp\update.zip"
-Expand-Archive "C:\temp\update.zip" -DestinationPath "C:\temp\update"
-powershell -ExecutionPolicy Bypass -File "C:\temp\update\Windows11FastLight-Setup.ps1" -Silent
-<h3>Option 3: Trust cert first (for signed verification)</h3>
+Expand-Archive "C:\temp\update.zip" -DestinationPath "C:\temp\update" -Force
+powershell -ExecutionPolicy Bypass -File "C:\temp\update\Windows11FastLight-Setup.ps1" -Silent</code></pre>
+          </div>
+        </div>
+
+        <div class="panel" id="t3">
+          <div class="step"><div class="step-num">1</div><div><h4>Trust the certificate</h4><p>Optional. Imports <code>GoStudios.cer</code> into Trusted Root and Trusted Publisher so the signature verifies.</p></div></div>
+          <div class="code-block">
+            <div class="code-head"><span>PowerShell — Administrator</span><button class="copy-btn" onclick="copyCode(this)">Copy</button></div>
 <pre><code>powershell -ExecutionPolicy Bypass -File "Trust-GoStudiosCert.ps1" -CerPath "GoStudios.cer"
-powershell -ExecutionPolicy Bypass -File "Windows11FastLight-Setup.ps1" -Silent
-<div class="card">
-<h3>Verify</h3>
-<pre><code>Get-ItemProperty "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\Windows11FastLight" | Select-Object DisplayName, DisplayVersion
-Get-Service -Name DiagTrack, SysMain, WSearch | Select-Object Name, Status, StartType
-<div class="card">
-<h3>Undo (if needed)</h3>
+powershell -ExecutionPolicy Bypass -File "Windows11FastLight-Setup.ps1" -Silent</code></pre>
+          </div>
+          <div class="step"><div class="step-num">2</div><div><h4>Confirm the signature</h4><p>Check that the installer is signed before running it.</p></div></div>
+          <div class="code-block">
+            <div class="code-head"><span>PowerShell</span><button class="copy-btn" onclick="copyCode(this)">Copy</button></div>
+<pre><code>Get-AuthenticodeSignature ".\Windows11FastLight-Setup.ps1" | Select-Object Status, SignerCertificate</code></pre>
+          </div>
+        </div>
+
+        <div class="note">
+          <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          <div>The package only changes registry values and service start types. It never deletes system files. Run it as administrator, and use the Undo section below if you change your mind.</div>
+        </div>
+      </div>
+
+      <div class="grid" style="grid-template-columns:1fr 1fr;margin-top:16px">
+        <div class="card reveal">
+          <h3 style="font-size:15px;margin-bottom:10px">Verify it installed</h3>
+          <div class="code-block">
+            <div class="code-head"><span>PowerShell</span><button class="copy-btn" onclick="copyCode(this)">Copy</button></div>
+<pre><code>Get-ItemProperty "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\Windows11FastLight" |
+  Select-Object DisplayName, DisplayVersion
+
+Get-Service -Name DiagTrack, SysMain, WSearch |
+  Select-Object Name, Status, StartType</code></pre>
+          </div>
+        </div>
+        <div class="card reveal">
+          <h3 style="font-size:15px;margin-bottom:10px">Undo everything</h3>
+          <div class="code-block">
+            <div class="code-head"><span>PowerShell — Administrator</span><button class="copy-btn" onclick="copyCode(this)">Copy</button></div>
 <pre><code>Set-Service -Name SysMain -StartupType Automatic
 Set-Service -Name WSearch -StartupType Automatic
 powercfg /h on
-Set-ItemProperty -Path "HKLM:\SOFTWARE\Policies\Microsoft\Windows\DataCollection" -Name "AllowTelemetry" -Value 1
-<section class="section" id="faq">
-<div class="container">
-<h2>Frequently Asked Questions</h2>
-<div class="faq-item"><div class="faq-q" onclick="this.parentElement.classList.toggle('open')">Is this safe to install?</div><div class="faq-a">Yes. All changes are registry and service modifications that can be reversed. No system files are deleted or modified. The installer is signed with a code-signing certificate.</div></div>
-<div class="faq-item"><div class="faq-q" onclick="this.parentElement.classList.toggle('open')">Will this break Windows Update?</div><div class="faq-a">No. Windows Update services remain enabled. Only unnecessary background services are disabled.</div></div>
-<div class="faq-item"><div class="faq-q" onclick="this.parentElement.classList.toggle('open')">Can I undo the changes?</div><div class="faq-a">Yes. See the Undo section above, or re-enable services manually.</div></div>
-<div class="faq-item"><div class="faq-q" onclick="this.parentElement.classList.toggle('open')">Does this work on Windows 10?</div><div class="faq-a">This update is designed for Windows 11. Some optimizations may work on Windows 10 but are not tested.</div></div>
-<div class="faq-item"><div class="faq-q" onclick="this.parentElement.classList.toggle('open')">How much disk space does it free?</div><div class="faq-a">Disabling hibernation frees disk space equal to your RAM size. Cleaning temp files typically frees 1-5 GB.</div></div>
-<div class="faq-item"><div class="faq-q" onclick="this.parentElement.classList.toggle('open')">Will my PC be faster?</div><div class="faq-a">Yes. Disabling telemetry, background apps, and unnecessary services reduces CPU and disk usage. Optimizing visual effects and memory management improves responsiveness.</div></div>
-<div class="faq-item"><div class="faq-q" onclick="this.parentElement.classList.toggle('open')">Is this from Microsoft?</div><div class="faq-a">No, this is a community-created update by GoStudios, based on Microsoft's official Windows 11 specifications. It is not affiliated with Microsoft.</div></div>
-<div class="faq-item"><div class="faq-q" onclick="this.parentElement.classList.toggle('open')">How do I verify it installed?</div><div class="faq-a">Run: Get-ItemProperty "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\Windows11FastLight" | Select-Object DisplayName, DisplayVersion</div></div>
-</div>
-</section>
+Set-ItemProperty -Path "HKLM:\SOFTWARE\Policies\Microsoft\Windows\DataCollection" -Name "AllowTelemetry" -Value 1</code></pre>
+          </div>
+        </div>
+      </div>
+    </section>
 
-<footer>
-<p>Based on <a href="https://www.microsoft.com/en-us/software-download/windows11">Microsoft's official Windows 11 page</a></p>
-<p>Windows 11 Update &copy; 2026 GoStudios. All rights reserved. Windows and Windows 11 are trademarks of Microsoft Corporation.</p>
-<p>License: MIT</p>
+    <!-- VERSIONS -->
+    <section class="section" id="versions">
+      <div class="section-head reveal">
+        <div class="kicker">Version history</div>
+        <h2>Versions &amp; release notes</h2>
+        <p>Every release is cumulative. Installing the latest gives you everything from the previous versions.</p>
+      </div>
+      <div class="timeline">
+
+        <div class="release current reveal">
+          <div class="release-card">
+            <div class="release-top">
+              <h3>26H2.3</h3>
+              <span class="badge current">Latest</span>
+              <span class="release-meta" style="margin:0">KB5000007 · 7 Nov 2026</span>
+            </div>
+            <ul>
+              <li>12 optimizations — the full set</li>
+              <li>Disable telemetry &amp; background apps</li>
+              <li>Optimize SSD, memory and network</li>
+              <li>Clean temp files and update cache</li>
+              <li>Signed installer + Undo guide</li>
+            </ul>
+            <a class="dl" href="https://github.com/GoStudios-Real/Windows11Update/releases/latest/download/Windows11FastLight-Package.zip">
+              <svg viewBox="0 0 24 24"><path d="M12 3v12"/><path d="m7 11 5 5 5-5"/><path d="M4 20h16"/></svg>
+              Download 26H2.3
+            </a>
+          </div>
+        </div>
+
+        <div class="release reveal">
+          <div class="release-card">
+            <div class="release-top">
+              <h3>26H2.2</h3>
+              <span class="badge old">Superseded</span>
+              <span class="release-meta" style="margin:0">KB5000006 · Pro Better</span>
+            </div>
+            <ul>
+              <li>Memory and page-file tuning</li>
+              <li>Telemetry policy set to 0</li>
+              <li>Visual effects set to performance</li>
+              <li>Core service trimming</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="release reveal">
+          <div class="release-card">
+            <div class="release-top">
+              <h3>26H2.1</h3>
+              <span class="badge old">Superseded</span>
+              <span class="release-meta" style="margin:0">KB5000005 · Initial release</span>
+            </div>
+            <ul>
+              <li>First public build</li>
+              <li>Basic service and telemetry changes</li>
+              <li>Registry uninstall entry</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="release reveal">
+          <div class="release-card">
+            <div class="release-top">
+              <h3>26H2.4</h3>
+              <span class="badge next">Planned</span>
+              <span class="release-meta" style="margin:0">Next update</span>
+            </div>
+            <ul>
+              <li>Per-profile tuning presets</li>
+              <li>Offline rollback snapshot</li>
+              <li>Optional scheduled maintenance</li>
+            </ul>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="section" id="faq">
+      <div class="section-head reveal">
+        <div class="kicker">FAQ</div>
+        <h2>Frequently asked questions</h2>
+        <p>Still unsure? Ask the AI assistant in the corner — it answers from the same information.</p>
+      </div>
+      <div class="reveal">
+        <div class="faq-item"><div class="faq-q" onclick="this.parentElement.classList.toggle('open')">Is this safe to install?</div><div class="faq-a">Yes. Every change is a registry value or a service start type, and all of them are reversible. No system files are deleted or modified. The installer is signed with a code-signing certificate.</div></div>
+        <div class="faq-item"><div class="faq-q" onclick="this.parentElement.classList.toggle('open')">Will this break Windows Update?</div><div class="faq-a">No. Windows Update and its related services stay enabled. Only unnecessary background services such as DiagTrack, SysMain and WSearch are stopped.</div></div>
+        <div class="faq-item"><div class="faq-q" onclick="this.parentElement.classList.toggle('open')">Can I undo the changes?</div><div class="faq-a">Yes. Use the <a href="#install">Undo commands</a> in the install section, or re-enable each service manually. Nothing is one-way.</div></div>
+        <div class="faq-item"><div class="faq-q" onclick="this.parentElement.classList.toggle('open')">Does this work on Windows 10?</div><div class="faq-a">This update targets Windows 11. Some optimizations may work on Windows 10, but they are not tested or supported.</div></div>
+        <div class="faq-item"><div class="faq-q" onclick="this.parentElement.classList.toggle('open')">How much disk space does it free?</div><div class="faq-a">Disabling hibernation frees roughly the size of your RAM (for example 16&nbsp;GB on a 16&nbsp;GB machine). Cleaning temp files and the update cache typically frees another 1–5&nbsp;GB.</div></div>
+        <div class="faq-item"><div class="faq-q" onclick="this.parentElement.classList.toggle('open')">Will my PC actually be faster?</div><div class="faq-a">Background CPU and disk activity drop, boot is shorter, and the UI responds more quickly. The exact gain depends on your hardware and how much software you have installed.</div></div>
+        <div class="faq-item"><div class="faq-q" onclick="this.parentElement.classList.toggle('open')">Is this from Microsoft?</div><div class="faq-a">No. This is a community project by GoStudios, built on Microsoft's documented Windows 11 settings. It is not affiliated with, endorsed by, or supported by Microsoft.</div></div>
+        <div class="faq-item"><div class="faq-q" onclick="this.parentElement.classList.toggle('open')">How do I verify it installed?</div><div class="faq-a">Run <code>Get-ItemProperty "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\Windows11FastLight" | Select DisplayName, DisplayVersion</code>. You should see version <code>26H2.3</code>.</div></div>
+        <div class="faq-item"><div class="faq-q" onclick="this.parentElement.classList.toggle('open')">Do I need to reboot?</div><div class="faq-a">No. Most changes take effect immediately. A reboot is only useful to measure the new cold boot time, and to fully release services that were already running.</div></div>
+      </div>
+    </section>
+
+  </main>
+</div>
+
+<!-- ================= FOOTER ================= -->
+<footer class="footer">
+  <div class="footer-inner">
+    <div>
+      <a class="brand" href="#top">
+        <span class="brand-mark">
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor"><rect x="2" y="2" width="9" height="9" rx="1.5"/><rect x="13" y="2" width="9" height="9" rx="1.5"/><rect x="2" y="13" width="9" height="9" rx="1.5"/><rect x="13" y="13" width="9" height="9" rx="1.5"/></svg>
+        </span>
+        Windows 11 Update
+      </a>
+      <p class="small">A free, open optimization package that makes Windows 11 faster, quicker and lighter.</p>
+    </div>
+    <div>
+      <h5>Product</h5>
+      <a href="#features">Features</a>
+      <a href="#performance">Performance</a>
+      <a href="#versions">Versions</a>
+      <a href="#install">Install</a>
+    </div>
+    <div>
+      <h5>Resources</h5>
+      <a href="https://github.com/GoStudios-Real/Windows11Update/releases">Releases</a>
+      <a href="https://github.com/GoStudios-Real/Windows11Update/blob/master/README.md">Documentation</a>
+      <a href="https://github.com/GoStudios-Real/Windows11Update/issues">Report an issue</a>
+      <a href="#faq">FAQ</a>
+    </div>
+    <div>
+      <h5>Project</h5>
+      <a href="https://github.com/GoStudios-Real/Windows11Update">GitHub</a>
+      <a href="https://github.com/GoStudios-Real/Windows11Update/releases/latest">Latest release</a>
+      <a href="https://github.com/GoStudios-Real/Windows11Update/blob/master/LICENSE">License (MIT)</a>
+    </div>
+  </div>
+  <div class="legal">
+    <p>Based on <a href="https://www.microsoft.com/en-us/software-download/windows11">Microsoft's official Windows 11 download page</a>.</p>
+    <p>&copy; 2026 GoStudios. All rights reserved. Windows and Windows 11 are trademarks of Microsoft Corporation. This project is not affiliated with or endorsed by Microsoft.</p>
+  </div>
 </footer>
 
-<!-- AI Support Chat -->
-<button class="ai-toggle" onclick="document.getElementById('aiChat').classList.toggle('open')" title="AI Support">ðŸ’¬</button>
+<!-- ================= AI SUPPORT ================= -->
+<button class="ai-fab" onclick="toggleChat()" aria-label="Open AI support" title="AI support">
+  <svg viewBox="0 0 24 24"><rect x="4" y="8" width="16" height="12" rx="3"/><circle cx="9" cy="14" r="1.2" fill="#fff" stroke="none"/><circle cx="15" cy="14" r="1.2" fill="#fff" stroke="none"/><path d="M12 8V4M9 4h6"/></svg>
+</button>
+
 <div class="ai-chat" id="aiChat">
-<div class="ai-header">
-<h3>AI Support</h3>
-<button class="ai-close" onclick="document.getElementById('aiChat').classList.remove('open')">&times;</button>
-</div>
-<div class="ai-messages" id="aiMessages">
-<div class="ai-msg bot">Hi! I'm your Windows 11 Update support assistant. Ask me anything about the update, installation, or troubleshooting.</div>
-</div>
-<div class="ai-input">
-<input type="text" id="aiInput" placeholder="Ask a question..." onkeypress="if(event.key==='Enter')sendAI()">
-<button onclick="sendAI()">Send</button>
-</div>
+  <div class="ai-header">
+    <div class="ai-avatar">
+      <svg viewBox="0 0 24 24"><rect x="4" y="8" width="16" height="12" rx="3"/><circle cx="9" cy="14" r="1.1" fill="#fff" stroke="none"/><circle cx="15" cy="14" r="1.1" fill="#fff" stroke="none"/><path d="M12 8V4M9 4h6"/></svg>
+    </div>
+    <div class="ai-header-text">
+      <h3>Update Assistant</h3>
+      <p><i></i>Online · answers instantly</p>
+    </div>
+    <button class="ai-close" onclick="toggleChat()" aria-label="Close">&times;</button>
+  </div>
+  <div class="ai-messages" id="aiMessages">
+    <div class="ai-msg bot">Hi! I'm the Windows 11 Update assistant. Ask me about installing, versions, verification, or how to undo changes.</div>
+  </div>
+  <div class="ai-suggest">
+    <button onclick="askSuggestion('How do I install?')">How do I install?</button>
+    <button onclick="askSuggestion('What is in 26H2.3?')">What's in 26H2.3?</button>
+    <button onclick="askSuggestion('How do I undo it?')">How do I undo it?</button>
+  </div>
+  <div class="ai-input">
+    <input type="text" id="aiInput" placeholder="Ask a question..." onkeydown="if(event.key==='Enter')sendAI()" aria-label="Ask a question">
+    <button class="ai-send" onclick="sendAI()" aria-label="Send">
+      <svg viewBox="0 0 24 24"><path d="m22 2-11 11"/><path d="M22 2 15 22l-4-9-9-4z"/></svg>
+    </button>
+  </div>
 </div>
 
 <script>
-function sendAI() {
-    var input = document.getElementById('aiInput');
-    var msg = input.value.trim();
-    if (!msg) return;
-    var messages = document.getElementById('aiMessages');
-    messages.innerHTML += '<div class="ai-msg user">' + msg + '</div>';
-    input.value = '';
-    var response = getAIResponse(msg.toLowerCase());
-    setTimeout(function() {
-        messages.innerHTML += '<div class="ai-msg bot">' + response + '</div>';
-        messages.scrollTop = messages.scrollHeight;
-    }, 500);
-    messages.scrollTop = messages.scrollHeight;
+/* ---------- Tabs ---------- */
+function showTab(btn, id){
+  var card = btn.closest('.card');
+  card.querySelectorAll('.tab').forEach(function(t){ t.classList.remove('active'); });
+  card.querySelectorAll('.panel').forEach(function(p){ p.classList.remove('active'); });
+  btn.classList.add('active');
+  document.getElementById(id).classList.add('active');
 }
-function getAIResponse(q) {
-    if (q.includes('install')) return 'To install: Run PowerShell as Administrator, then execute: powershell -ExecutionPolicy Bypass -File "Windows11FastLight-Setup.ps1" -Silent';
-    if (q.includes('undo') || q.includes('revert')) return 'To undo: Set-Service SysMain -StartupType Automatic; powercfg /h on; Set-ItemProperty HKLM:\\SOFTWARE\\Policies\\Microsoft\\Windows\\DataCollection AllowTelemetry 1';
-    if (q.includes('verify') || q.includes('check')) return 'Verify with: Get-ItemProperty "HKLM:\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\Windows11FastLight" | Select DisplayName, DisplayVersion';
-    if (q.includes('safe')) return 'Yes, all changes are reversible registry and service modifications. No system files are deleted.';
-    if (q.includes('faster') || q.includes('speed')) return 'The update disables telemetry, background apps, and unnecessary services, and optimizes visual effects, network, memory, and SSDs for maximum performance.';
-    if (q.includes('disk') || q.includes('space')) return 'Disabling hibernation frees disk space equal to your RAM size. Cleaning temp files typically frees 1-5 GB.';
-    if (q.includes('windows 10')) return 'This update is designed for Windows 11. Some optimizations may work on Windows 10 but are not tested.';
-    if (q.includes('microsoft')) return 'No, this is a community-created update by GoStudios, based on Microsoft official Windows 11 specifications. It is not affiliated with Microsoft.';
-    if (q.includes('break')) return 'No, Windows Update services remain enabled. Only unnecessary background services are disabled.';
-    return 'I can help with installation, verification, undoing changes, safety, performance, disk space, and more. What would you like to know?';
+
+/* ---------- Copy buttons ---------- */
+function copyCode(btn){
+  var block = btn.closest('.code-block');
+  var code = block.querySelector('code').innerText;
+  var done = function(){
+    btn.textContent = 'Copied!';
+    btn.classList.add('copied');
+    setTimeout(function(){ btn.textContent = 'Copy'; btn.classList.remove('copied'); }, 1600);
+  };
+  if (navigator.clipboard && navigator.clipboard.writeText){
+    navigator.clipboard.writeText(code).then(done, function(){ fallbackCopy(code, done); });
+  } else {
+    fallbackCopy(code, done);
+  }
 }
+function fallbackCopy(text, done){
+  var ta = document.createElement('textarea');
+  ta.value = text;
+  ta.style.position = 'fixed';
+  ta.style.opacity = '0';
+  document.body.appendChild(ta);
+  ta.select();
+  try { document.execCommand('copy'); done(); } catch(e) {}
+  document.body.removeChild(ta);
+}
+
+/* ---------- AI chat ---------- */
+function toggleChat(){
+  var chat = document.getElementById('aiChat');
+  chat.classList.toggle('open');
+  if (chat.classList.contains('open')){
+    document.getElementById('aiInput').focus();
+  }
+}
+function addMsg(text, who){
+  var box = document.getElementById('aiMessages');
+  var el = document.createElement('div');
+  el.className = 'ai-msg ' + who;
+  el.innerHTML = text;
+  box.appendChild(el);
+  box.scrollTop = box.scrollHeight;
+}
+function sendAI(){
+  var input = document.getElementById('aiInput');
+  var msg = input.value.trim();
+  if (!msg) return;
+  addMsg(escapeHtml(msg), 'user');
+  input.value = '';
+  respond(msg);
+}
+function askSuggestion(text){
+  addMsg(escapeHtml(text), 'user');
+  respond(text);
+}
+function escapeHtml(s){
+  return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+}
+function respond(msg){
+  var box = document.getElementById('aiMessages');
+  var typing = document.createElement('div');
+  typing.className = 'ai-typing';
+  typing.innerHTML = '<i></i><i></i><i></i>';
+  box.appendChild(typing);
+  box.scrollTop = box.scrollHeight;
+
+  var answer = getAIResponse(msg.toLowerCase());
+  setTimeout(function(){
+    typing.remove();
+    addMsg(answer, 'bot');
+  }, 550);
+}
+function getAIResponse(q){
+  if (q.indexOf('install') > -1 || q.indexOf('setup') > -1)
+    return 'Download the ZIP from the latest release, extract it, then run in an elevated PowerShell:<br><code>powershell -ExecutionPolicy Bypass -File "Windows11FastLight-Setup.ps1" -Silent</code>';
+  if (q.indexOf('26h2.3') > -1 || q.indexOf('version') > -1 || q.indexOf('what') > -1 || q.indexOf('new') > -1)
+    return 'Version <b>26H2.3</b> (KB5000007) is the latest. It contains 12 optimizations: telemetry off, startup apps removed, 13 services disabled, visual effects tuned, SSD trim, hibernation off, temp cleanup, background apps off, network and memory tuning.';
+  if (q.indexOf('undo') > -1 || q.indexOf('revert') > -1 || q.indexOf('remove') > -1 || q.indexOf('uninstall') > -1)
+    return 'To undo, run in an elevated PowerShell:<br><code>Set-Service SysMain -StartupType Automatic</code><br><code>Set-Service WSearch -StartupType Automatic</code><br><code>powercfg /h on</code><br>Then set AllowTelemetry back to 1.';
+  if (q.indexOf('verify') > -1 || q.indexOf('check') > -1 || q.indexOf('installed') > -1)
+    return 'Check the uninstall entry:<br><code>Get-ItemProperty "HKLM:\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\Windows11FastLight"</code><br>DisplayVersion should read 26H2.3.';
+  if (q.indexOf('safe') > -1 || q.indexOf('virus') > -1 || q.indexOf('secure') > -1)
+    return 'Yes. All changes are reversible registry and service settings. No system files are deleted. The installer is code-signed, and you can verify it with <code>Get-AuthenticodeSignature</code>.';
+  if (q.indexOf('faster') > -1 || q.indexOf('speed') > -1 || q.indexOf('slow') > -1 || q.indexOf('performance') > -1)
+    return 'The update cuts background CPU and disk activity, shortens boot time, and tunes memory, storage and network. Expect fewer background processes and lower idle RAM use.';
+  if (q.indexOf('disk') > -1 || q.indexOf('space') > -1 || q.indexOf('storage') > -1)
+    return 'Turning hibernation off frees roughly your RAM size in disk space. Temp and update-cache cleanup usually frees another 1–5 GB.';
+  if (q.indexOf('windows 10') > -1 || q.indexOf('win10') > -1)
+    return 'This update targets Windows 11. It may partly work on Windows 10 but is not tested or supported there.';
+  if (q.indexOf('microsoft') > -1 || q.indexOf('official') > -1)
+    return 'This is a community project by GoStudios, built on documented Windows 11 settings. It is not affiliated with or endorsed by Microsoft.';
+  if (q.indexOf('reboot') > -1 || q.indexOf('restart') > -1)
+    return 'No reboot is required. Most changes apply right away. A restart is only useful to measure the new boot time and fully release running services.';
+  if (q.indexOf('break') > -1 || q.indexOf('update') > -1)
+    return 'Windows Update stays enabled. Only unnecessary background services are stopped, so Windows can still download and install updates.';
+  if (q.indexOf('requirement') > -1 || q.indexOf('support') > -1)
+    return 'Windows 11, 64-bit, and an administrator PowerShell window. The package itself is about 11 KB.';
+  return 'I can help with installing, versions, verification, safety, performance, disk space and undoing changes. Try one of the suggestions below the chat.';
+}
+
+/* ---------- Scroll spy ---------- */
+(function(){
+  var links = document.querySelectorAll('.sidebar-nav a[href^="#"]');
+  var map = {};
+  links.forEach(function(l){
+    var id = l.getAttribute('href').slice(1);
+    if (id) map[id] = l;
+  });
+  var observer = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if (e.isIntersecting && map[e.target.id]){
+        links.forEach(function(l){ l.classList.remove('active'); });
+        map[e.target.id].classList.add('active');
+      }
+    });
+  }, { rootMargin: '-15% 0px -65% 0px', threshold: 0 });
+  Object.keys(map).forEach(function(id){
+    var el = document.getElementById(id);
+    if (el) observer.observe(el);
+  });
+})();
+
+/* ---------- Reveal on scroll ---------- */
+(function(){
+  var els = document.querySelectorAll('.reveal');
+  if (!('IntersectionObserver' in window)){
+    els.forEach(function(el){ el.classList.add('in'); });
+    return;
+  }
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if (e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); }
+    });
+  }, { threshold: 0.08 });
+  els.forEach(function(el){ io.observe(el); });
+})();
+
+/* ---------- Close sidebar on nav click (mobile) ---------- */
+document.querySelectorAll('.sidebar-nav a').forEach(function(a){
+  a.addEventListener('click', function(){
+    document.querySelector('.sidebar').classList.remove('open');
+  });
+});
 </script>
 </body>
 </html>
-
-
-
-
