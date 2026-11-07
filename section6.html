@@ -1,0 +1,44 @@
+<section class="section" id="faq">
+<div class="container">
+<h2>Frequently Asked Questions</h2>
+<div class="faq-item">
+<div class="faq-q" onclick="this.parentElement.classList.toggle('open')">Is this safe to install?</div>
+<div class="faq-a">Yes. All changes are registry and service modifications that can be reversed. No system files are deleted or modified. The installer is signed with a code-signing certificate.</div>
+</div>
+<div class="faq-item">
+<div class="faq-q" onclick="this.parentElement.classList.toggle('open')">Will this break Windows Update?</div>
+<div class="faq-a">No. Windows Update services remain enabled. Only unnecessary background services are disabled.</div>
+</div>
+<div class="faq-item">
+<div class="faq-q" onclick="this.parentElement.classList.toggle('open')">Can I undo the changes?</div>
+<div class="faq-a">Yes. See the Undo section above, or run: Set-Service -Name SysMain -StartupType Automatic; powercfg /h on</div>
+</div>
+<div class="faq-item">
+<div class="faq-q" onclick="this.parentElement.classList.toggle('open')">Does this work on Windows 10?</div>
+<div class="faq-a">This update is designed for Windows 11. Some optimizations may work on Windows 10 but are not tested.</div>
+</div>
+<div class="faq-item">
+<div class="faq-q" onclick="this.parentElement.classList.toggle('open')">How much disk space does it free?</div>
+<div class="faq-a">Disabling hibernation frees disk space equal to your RAM size (e.g., 16 GB RAM = 16 GB freed). Cleaning temp files typically frees 1-5 GB.</div>
+</div>
+<div class="faq-item">
+<div class="faq-q" onclick="this.parentElement.classList.toggle('open')">Will my PC be faster?</div>
+<div class="faq-a">Yes. Disabling telemetry, background apps, and unnecessary services reduces CPU and disk usage. Optimizing visual effects and memory management improves responsiveness.</div>
+</div>
+<div class="faq-item">
+<div class="faq-q" onclick="this.parentElement.classList.toggle('open')">Is this from Microsoft?</div>
+<div class="faq-a">No, this is a community-created update by GoStudios, based on Microsoft's official Windows 11 specifications. It is not affiliated with Microsoft.</div>
+</div>
+<div class="faq-item">
+<div class="faq-q" onclick="this.parentElement.classList.toggle('open')">How do I verify it installed?</div>
+<div class="faq-a">Run: Get-ItemProperty "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\Windows11FastLight" | Select-Object DisplayName, DisplayVersion</div>
+</div>
+</div>
+</section>
+
+<footer>
+<p>Based on <a href="https://www.microsoft.com/en-us/software-download/windows11">Microsoft's official Windows 11 page</a></p>
+<p>License: MIT - Copyright (c) 2026 GoStudios</p>
+</footer>
+</body>
+</html>

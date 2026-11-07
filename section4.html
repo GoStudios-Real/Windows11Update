@@ -1,0 +1,4 @@
+<div class="card">
+<h3>Verify</h3>
+<pre><code>Get-ItemProperty "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\Windows11FastLight" | Select-Object DisplayName, DisplayVersion
+Get-Service -Name DiagTrack, SysMain, WSearch | Select-Object Name, Status, StartType
