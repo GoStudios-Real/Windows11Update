@@ -1,0 +1,11 @@
+<Update>
+  <ID>KB5000007</ID>
+  <Title>Windows 11 Fast & Light Update 26H2.3</Title>
+  <Description>Makes Windows 11 genuinely faster, quicker, and lighter. Optimizes startup, services, network, memory, and storage.</Description>
+  <Version>26H2.3</Version>
+  <Publisher>Microsoft</Publisher>
+  <Payload>stage</Payload>
+  <InstallCommand>powershell -ExecutionPolicy Bypass -File Windows11FastLight-Setup.ps1</InstallCommand>
+  <RebootRequired>false</RebootRequired>
+  <Source>https://www.microsoft.com/en-us/software-download/windows11</Source>
+</Update>

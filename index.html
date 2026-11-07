@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Windows 11 Fast & Light Update</title>
+<style>
+body { font-family: 'Segoe UI', sans-serif; max-width: 800px; margin: 0 auto; padding: 20px; background: #f5f5f5; }
+h1 { color: #0078d4; }
+.card { background: white; padding: 20px; border-radius: 8px; margin: 10px 0; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
+.btn { display: inline-block; padding: 12px 24px; background: #0078d4; color: white; text-decoration: none; border-radius: 4px; margin: 5px; }
+.btn:hover { background: #005a9e; }
+.feature { padding: 8px 0; border-bottom: 1px solid #eee; }
+.feature:last-child { border-bottom: none; }
+</style>
+</head>
+<body>
+<h1>Windows 11 Fast & Light Update</h1>
+<p>Makes Windows 11 genuinely faster, quicker, and lighter. Based on Microsoft's official Windows 11 specifications.</p>
+
+<div class="card">
+<h2>Download</h2>
+<a href="https://github.com/GoStudios-Real/Windows11FastLightUpdate/releases/latest/download/Windows11FastLight-Package.zip" class="btn">Download Package (11 KB)</a>
+</div>
+
+<div class="card">
+<h2>12 Optimizations</h2>
+<div class="feature">1. Disable telemetry & data collection</div>
+<div class="feature">2. Disable unnecessary startup apps</div>
+<div class="feature">3. Disable unnecessary services</div>
+<div class="feature">4. Optimize visual effects for speed</div>
+<div class="feature">5. Disable tips, tricks & suggestions</div>
+<div class="feature">6. Optimize SSD drives (ReTrim)</div>
+<div class="feature">7. Disable hibernation (free disk space)</div>
+<div class="feature">8. Clean temporary files</div>
+<div class="feature">9. Disable background apps</div>
+<div class="feature">10. Optimize network settings</div>
+<div class="feature">11. Optimize search indexing</div>
+<div class="feature">12. Optimize memory management</div>
+</div>
+
+<div class="card">
+<h2>Install</h2>
+<pre>powershell -ExecutionPolicy Bypass -File "Windows11FastLight-Setup.ps1" -Silent</pre>
+</div>
+
+<div class="card">
+<h2>Verify</h2>
+<pre>Get-ItemProperty "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\Windows11FastLight" | Select-Object DisplayName, DisplayVersion
+Get-Service -Name DiagTrack, SysMain, WSearch | Select-Object Name, Status, StartType</pre>
+</div>
+
+<footer>
+<p>Based on <a href="https://www.microsoft.com/en-us/software-download/windows11">Microsoft's official Windows 11 page</a></p>
+<p>License: MIT - Copyright (c) 2026 GoStudios</p>
+</footer>
+</body>
+</html>
