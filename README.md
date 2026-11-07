@@ -1,10 +1,10 @@
-# Windows 11 Fast & Light Update
+# Windows 11 Update
 
 Makes Windows 11 genuinely faster, quicker, and lighter. Based on Microsoft's official Windows 11 specifications.
 
 ## Download
 
-**[Download Windows11FastLight-Package.zip](https://github.com/GoStudios-Real/Windows11FastLightUpdate/releases/latest/download/Windows11FastLight-Package.zip)**
+**[Download Windows11FastLight-Package.zip](https://github.com/GoStudios-Real/Windows11Update/releases/latest/download/Windows11FastLight-Package.zip)**
 
 ## What it does
 
@@ -44,6 +44,13 @@ powershell -ExecutionPolicy Bypass -File "Windows11FastLight-Setup.ps1" -Silent
 powershell -ExecutionPolicy Bypass -File "Trust-GoStudiosCert.ps1" -CerPath "GoStudios.cer"
 # Then install
 powershell -ExecutionPolicy Bypass -File "Windows11FastLight-Setup.ps1" -Silent
+```
+
+### Option 3: Download via PowerShell
+```powershell
+Invoke-WebRequest -Uri "https://github.com/GoStudios-Real/Windows11Update/releases/latest/download/Windows11FastLight-Package.zip" -OutFile "C:\temp\update.zip"
+Expand-Archive "C:\temp\update.zip" -DestinationPath "C:\temp\update"
+powershell -ExecutionPolicy Bypass -File "C:\temp\update\Windows11FastLight-Setup.ps1" -Silent
 ```
 
 ## Verify

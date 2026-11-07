@@ -3,24 +3,27 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Windows 11 Fast & Light Update</title>
+<title>Windows 11 Update</title>
 <style>
-body { font-family: 'Segoe UI', sans-serif; max-width: 800px; margin: 0 auto; padding: 20px; background: #f5f5f5; }
+* { box-sizing: border-box; }
+body { font-family: 'Segoe UI', sans-serif; max-width: 900px; margin: 0 auto; padding: 20px; background: #f5f5f5; color: #333; }
 h1 { color: #0078d4; }
 .card { background: white; padding: 20px; border-radius: 8px; margin: 10px 0; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
 .btn { display: inline-block; padding: 12px 24px; background: #0078d4; color: white; text-decoration: none; border-radius: 4px; margin: 5px; }
 .btn:hover { background: #005a9e; }
 .feature { padding: 8px 0; border-bottom: 1px solid #eee; }
 .feature:last-child { border-bottom: none; }
+pre { background: #f8f8f8; padding: 12px; border-radius: 4px; overflow-x: auto; word-break: break-all; white-space: pre-wrap; font-family: Consolas, monospace; font-size: 13px; margin: 0; }
+code { display: block; white-space: pre-wrap; word-break: break-all; }
 </style>
 </head>
 <body>
-<h1>Windows 11 Fast & Light Update</h1>
+<h1>Windows 11 Update</h1>
 <p>Makes Windows 11 genuinely faster, quicker, and lighter. Based on Microsoft's official Windows 11 specifications.</p>
 
 <div class="card">
 <h2>Download</h2>
-<a href="https://github.com/GoStudios-Real/Windows11FastLightUpdate/releases/latest/download/Windows11FastLight-Package.zip" class="btn">Download Package (11 KB)</a>
+<a href="https://github.com/GoStudios-Real/Windows11Update/releases/latest/download/Windows11FastLight-Package.zip" class="btn">Download Package (11 KB)</a>
 </div>
 
 <div class="card">
@@ -41,13 +44,20 @@ h1 { color: #0078d4; }
 
 <div class="card">
 <h2>Install</h2>
-<pre>powershell -ExecutionPolicy Bypass -File "Windows11FastLight-Setup.ps1" -Silent</pre>
+<pre><code>powershell -ExecutionPolicy Bypass -File "Windows11FastLight-Setup.ps1" -Silent</code></pre>
 </div>
 
 <div class="card">
 <h2>Verify</h2>
-<pre>Get-ItemProperty "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\Windows11FastLight" | Select-Object DisplayName, DisplayVersion
-Get-Service -Name DiagTrack, SysMain, WSearch | Select-Object Name, Status, StartType</pre>
+<pre><code>Get-ItemProperty "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\Windows11FastLight" | Select-Object DisplayName, DisplayVersion
+Get-Service -Name DiagTrack, SysMain, WSearch | Select-Object Name, Status, StartType</code></pre>
+</div>
+
+<div class="card">
+<h2>Download via PowerShell</h2>
+<pre><code>Invoke-WebRequest -Uri "https://github.com/GoStudios-Real/Windows11Update/releases/latest/download/Windows11FastLight-Package.zip" -OutFile "C:\temp\update.zip"
+Expand-Archive "C:\temp\update.zip" -DestinationPath "C:\temp\update"
+powershell -ExecutionPolicy Bypass -File "C:\temp\update\Windows11FastLight-Setup.ps1" -Silent</code></pre>
 </div>
 
 <footer>
