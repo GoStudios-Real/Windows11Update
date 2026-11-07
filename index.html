@@ -3,10 +3,18 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Windows 11 Update</title>
+<title>Windows 11 Update - GoStudios</title>
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
-body{font-family:'Segoe UI','Segoe UI Variable',sans-serif;background:#f3f3f3;color:#1a1a1a;line-height:1.6}
+body{font-family:'Segoe UI','Segoe UI Variable',sans-serif;background:#f3f3f3;color:#1a1a1a;line-height:1.6;display:flex;min-height:100vh}
+.sidebar{width:260px;background:#1a1a2e;color:white;padding:20px;position:fixed;height:100vh;overflow-y:auto;z-index:200}
+.sidebar-logo{font-size:20px;font-weight:700;margin-bottom:30px;color:#0078d4}
+.sidebar-nav{list-style:none}
+.sidebar-nav li{margin:4px 0}
+.sidebar-nav a{color:#ccc;text-decoration:none;display:block;padding:10px 16px;border-radius:6px;transition:background 0.2s}
+.sidebar-nav a:hover{background:rgba(255,255,255,0.1);color:white}
+.sidebar-nav a.active{background:#0078d4;color:white}
+.main{margin-left:260px;flex:1}
 .hero{background:linear-gradient(135deg,#0078d4 0%,#005a9e 50%,#003d6b 100%);color:white;padding:80px 20px;text-align:center}
 .hero h1{font-size:48px;font-weight:600;margin-bottom:16px}
 .hero p{font-size:20px;opacity:0.9;max-width:600px;margin:0 auto 30px}
@@ -29,7 +37,7 @@ pre{background:#1e1e1e;color:#d4d4d4;padding:16px;border-radius:8px;overflow-x:a
 .faq-q:hover{background:#f8f8f8}
 .faq-a{padding:0 20px 16px;color:#555;display:none}
 .faq-item.open .faq-a{display:block}
-.faq-item.open .faq-q::after{content:"âˆ’"}
+.faq-item.open .faq-q::after{content:"−"}
 .faq-q::after{content:"+";font-size:20px;color:#0078d4}
 .trailer{background:#1a1a1a;color:white;padding:60px 20px;text-align:center}
 .trailer-box{background:#2d2d2d;border-radius:8px;padding:40px;max-width:800px;margin:0 auto}
@@ -49,24 +57,44 @@ footer a{color:#0078d4;text-decoration:none}
 .nav-links a:hover{color:#0078d4}
 .screenshot-mock{background:linear-gradient(135deg,#1a1a2e 0%,#16213e 100%);border-radius:8px;padding:40px;text-align:center;color:#888;min-height:200px;display:flex;align-items:center;justify-content:center;flex-direction:column}
 .screenshot-mock .win-icon{font-size:48px;margin-bottom:12px}
+.ai-chat{position:fixed;bottom:20px;right:20px;width:360px;background:white;border-radius:12px;box-shadow:0 4px 24px rgba(0,0,0,0.15);z-index:300;overflow:hidden;display:none}
+.ai-chat.open{display:block}
+.ai-header{background:#0078d4;color:white;padding:12px 16px;display:flex;justify-content:space-between;align-items:center}
+.ai-header h3{font-size:14px;margin:0}
+.ai-close{background:none;border:none;color:white;font-size:20px;cursor:pointer}
+.ai-messages{height:300px;overflow-y:auto;padding:16px;background:#f8f8f8}
+.ai-msg{margin:8px 0;padding:8px 12px;border-radius:8px;max-width:80%}
+.ai-msg.bot{background:#e3f2fd;align-self:flex-start}
+.ai-msg.user{background:#0078d4;color:white;align-self:flex-end;margin-left:auto}
+.ai-input{display:flex;padding:8px;border-top:1px solid #eee}
+.ai-input input{flex:1;padding:8px;border:1px solid #ddd;border-radius:4px;margin-right:8px}
+.ai-input button{padding:8px 16px;background:#0078d4;color:white;border:none;border-radius:4px;cursor:pointer}
+.ai-toggle{position:fixed;bottom:20px;right:20px;width:56px;height:56px;background:#0078d4;color:white;border:none;border-radius:50%;font-size:24px;cursor:pointer;box-shadow:0 4px 12px rgba(0,0,0,0.2);z-index:299}
+.trademark{font-size:12px;color:#888;text-align:center;padding:20px;border-top:1px solid #eee;margin-top:20px}
+@media(max-width:768px){.sidebar{display:none}.main{margin-left:0}}
 </style>
 </head>
 <body>
 
-<nav class="nav">
-<div class="nav-inner">
-<a href="#" class="nav-logo">Windows 11 Update</a>
-<div class="nav-links">
-<a href="#features">Features</a>
-<a href="#trailer">Trailer</a>
-<a href="#install">Install</a>
-<a href="#faq">FAQ</a>
-<a href="https://github.com/GoStudios-Real/Windows11Update">GitHub</a>
-</div>
+<nav class="sidebar">
+<div class="sidebar-logo">Windows 11 Update</div>
+<ul class="sidebar-nav">
+<li><a href="#home" class="active">Home</a></li>
+<li><a href="#features">Features</a></li>
+<li><a href="#screenshots">Screenshots</a></li>
+<li><a href="#trailer">Trailer</a></li>
+<li><a href="#install">Install</a></li>
+<li><a href="#faq">FAQ</a></li>
+<li><a href="https://github.com/GoStudios-Real/Windows11Update">GitHub</a></li>
+</ul>
+<div style="margin-top:40px;padding:16px;background:rgba(255,255,255,0.05);border-radius:8px">
+<p style="font-size:12px;color:#888">Version 26H2.3</p>
+<p style="font-size:12px;color:#888">KB5000007</p>
 </div>
 </nav>
 
-<section class="hero">
+<div class="main">
+<section class="hero" id="home">
 <h1>Windows 11 Update</h1>
 <p>Makes Windows 11 genuinely faster, quicker, and lighter. Based on Microsoft's official Windows 11 specifications.</p>
 <a href="https://github.com/GoStudios-Real/Windows11Update/releases/latest/download/Windows11FastLight-Package.zip" class="btn">Download Now</a>
@@ -82,30 +110,30 @@ footer a{color:#0078d4;text-decoration:none}
 <div class="container">
 <h2>What It Does</h2>
 <div class="grid">
-<div class="feature-card"><div class="feature-icon">ðŸ”’</div><div class="feature-title">Disable Telemetry</div><div class="feature-desc">Turns off data collection and diagnostic reporting to improve privacy and reduce background activity.</div></div>
-<div class="feature-card"><div class="feature-icon">ðŸš€</div><div class="feature-title">Disable Startup Apps</div><div class="feature-desc">Removes unnecessary startup programs like OneDrive, Skype, Cortana, Teams, and Xbox.</div></div>
-<div class="feature-card"><div class="feature-icon">âš™ï¸</div><div class="feature-title">Disable Services</div><div class="feature-desc">Disables 13 unnecessary services including DiagTrack, SysMain, WSearch, MapsBroker, and more.</div></div>
-<div class="feature-card"><div class="feature-icon">ðŸŽ¨</div><div class="feature-title">Optimize Visual Effects</div><div class="feature-desc">Sets visual effects to performance mode for faster UI response.</div></div>
-<div class="feature-card"><div class="feature-icon">ðŸ’¡</div><div class="feature-title">Disable Tips & Suggestions</div><div class="feature-desc">Turns off Windows tips, tricks, and content delivery suggestions.</div></div>
-<div class="feature-card"><div class="feature-icon">ðŸ’¾</div><div class="feature-title">Optimize SSD Drives</div><div class="feature-desc">ReTrims SSDs and disables scheduled defrag for solid-state drives.</div></div>
-<div class="feature-card"><div class="feature-icon">ðŸ’¤</div><div class="feature-title">Disable Hibernation</div><div class="feature-desc">Frees disk space equal to your RAM size.</div></div>
-<div class="feature-card"><div class="feature-icon">ðŸ§¹</div><div class="feature-title">Clean Temp Files</div><div class="feature-desc">Removes temporary files and Windows Update cache.</div></div>
-<div class="feature-card"><div class="feature-icon">ðŸ”‡</div><div class="feature-title">Disable Background Apps</div><div class="feature-desc">Prevents apps from running in the background.</div></div>
-<div class="feature-card"><div class="feature-icon">ðŸŒ</div><div class="feature-title">Optimize Network</div><div class="feature-desc">Enables TCP autotuning, RSS, chimney, and ECN for faster network.</div></div>
-<div class="feature-card"><div class="feature-icon">ðŸ”</div><div class="feature-title">Optimize Search</div><div class="feature-desc">Reduces search indexing to essential locations only.</div></div>
-<div class="feature-card"><div class="feature-icon">ðŸ§ </div><div class="feature-title">Optimize Memory</div><div class="feature-desc">Disables paging executive and optimizes page file for better memory management.</div></div>
+<div class="feature-card"><div class="feature-icon">🔒</div><div class="feature-title">Disable Telemetry</div><div class="feature-desc">Turns off data collection and diagnostic reporting to improve privacy and reduce background activity.</div></div>
+<div class="feature-card"><div class="feature-icon">🚀</div><div class="feature-title">Disable Startup Apps</div><div class="feature-desc">Removes unnecessary startup programs like OneDrive, Skype, Cortana, Teams, and Xbox.</div></div>
+<div class="feature-card"><div class="feature-icon">⚙️</div><div class="feature-title">Disable Services</div><div class="feature-desc">Disables 13 unnecessary services including DiagTrack, SysMain, WSearch, MapsBroker, and more.</div></div>
+<div class="feature-card"><div class="feature-icon">🎨</div><div class="feature-title">Optimize Visual Effects</div><div class="feature-desc">Sets visual effects to performance mode for faster UI response.</div></div>
+<div class="feature-card"><div class="feature-icon">💡</div><div class="feature-title">Disable Tips & Suggestions</div><div class="feature-desc">Turns off Windows tips, tricks, and content delivery suggestions.</div></div>
+<div class="feature-card"><div class="feature-icon">💾</div><div class="feature-title">Optimize SSD Drives</div><div class="feature-desc">ReTrims SSDs and disables scheduled defrag for solid-state drives.</div></div>
+<div class="feature-card"><div class="feature-icon">💤</div><div class="feature-title">Disable Hibernation</div><div class="feature-desc">Frees disk space equal to your RAM size.</div></div>
+<div class="feature-card"><div class="feature-icon">🧹</div><div class="feature-title">Clean Temp Files</div><div class="feature-desc">Removes temporary files and Windows Update cache.</div></div>
+<div class="feature-card"><div class="feature-icon">🔇</div><div class="feature-title">Disable Background Apps</div><div class="feature-desc">Prevents apps from running in the background.</div></div>
+<div class="feature-card"><div class="feature-icon">🌐</div><div class="feature-title">Optimize Network</div><div class="feature-desc">Enables TCP autotuning, RSS, chimney, and ECN for faster network.</div></div>
+<div class="feature-card"><div class="feature-icon">🔍</div><div class="feature-title">Optimize Search</div><div class="feature-desc">Reduces search indexing to essential locations only.</div></div>
+<div class="feature-card"><div class="feature-icon">🧠</div><div class="feature-title">Optimize Memory</div><div class="feature-desc">Disables paging executive and optimizes page file for better memory management.</div></div>
 </div>
 </div>
 </section>
 
-<section class="section" style="background: white;">
+<section class="section" style="background: white;" id="screenshots">
 <div class="container">
 <h2>Screenshots</h2>
 <div class="grid">
-<div class="screenshot-mock"><div><div class="win-icon">ðŸ–¥ï¸</div><p>Windows 11 Desktop - Before</p></div></div>
-<div class="screenshot-mock"><div><div class="win-icon">âš¡</div><p>Windows 11 Desktop - After Update</p></div></div>
-<div class="screenshot-mock"><div><div class="win-icon">ðŸ“Š</div><p>Task Manager - Reduced Background Processes</p></div></div>
-<div class="screenshot-mock"><div><div class="win-icon">ðŸ”§</div><p>Services - Disabled Unnecessary Services</p></div></div>
+<div class="screenshot-mock"><div><div class="win-icon">🖥️</div><p>Windows 11 Desktop - Before</p></div></div>
+<div class="screenshot-mock"><div><div class="win-icon">⚡</div><p>Windows 11 Desktop - After Update</p></div></div>
+<div class="screenshot-mock"><div><div class="win-icon">📊</div><p>Task Manager - Reduced Background Processes</p></div></div>
+<div class="screenshot-mock"><div><div class="win-icon">🔧</div><p>Services - Disabled Unnecessary Services</p></div></div>
 </div>
 </div>
 </section>
@@ -116,11 +144,11 @@ footer a{color:#0078d4;text-decoration:none}
 <div class="trailer-box">
 <h3>Windows 11 Fast & Light Update</h3>
 <p>Watch how Windows 11 becomes faster, quicker, and lighter with 12 optimizations.</p>
-<div style="background: #1a1a1a; border-radius: 8px; padding: 60px 20px; margin: 20px 0;">
-<svg width="64" height="64" viewBox="0 0 24 24" fill="white"><polygon points="5,3 19,12 5,21"/></svg>
-<p style="color: #888; margin-top: 16px;">Trailer coming soon</p>
-</div>
-<p style="color: #666; font-size: 12px;">Trailer will be available soon. Check back for updates.</p>
+<video width="100%" height="auto" controls style="border-radius:8px;margin:20px 0;max-width:800px">
+<source src="trailer/trailer.mp4" type="video/mp4">
+Your browser does not support the video tag.
+</video>
+<p style="color: #666; font-size: 12px;">30-second trailer showing the optimization process.</p>
 </div>
 </div>
 </section>
@@ -164,8 +192,55 @@ Set-ItemProperty -Path "HKLM:\SOFTWARE\Policies\Microsoft\Windows\DataCollection
 
 <footer>
 <p>Based on <a href="https://www.microsoft.com/en-us/software-download/windows11">Microsoft's official Windows 11 page</a></p>
-<p>License: MIT - Copyright (c) 2026 GoStudios</p>
+<p>Windows 11 Update &copy; 2026 GoStudios. All rights reserved. Windows and Windows 11 are trademarks of Microsoft Corporation.</p>
+<p>License: MIT</p>
 </footer>
+
+<!-- AI Support Chat -->
+<button class="ai-toggle" onclick="document.getElementById('aiChat').classList.toggle('open')" title="AI Support">ðŸ’¬</button>
+<div class="ai-chat" id="aiChat">
+<div class="ai-header">
+<h3>AI Support</h3>
+<button class="ai-close" onclick="document.getElementById('aiChat').classList.remove('open')">&times;</button>
+</div>
+<div class="ai-messages" id="aiMessages">
+<div class="ai-msg bot">Hi! I'm your Windows 11 Update support assistant. Ask me anything about the update, installation, or troubleshooting.</div>
+</div>
+<div class="ai-input">
+<input type="text" id="aiInput" placeholder="Ask a question..." onkeypress="if(event.key==='Enter')sendAI()">
+<button onclick="sendAI()">Send</button>
+</div>
+</div>
+
+<script>
+function sendAI() {
+    var input = document.getElementById('aiInput');
+    var msg = input.value.trim();
+    if (!msg) return;
+    var messages = document.getElementById('aiMessages');
+    messages.innerHTML += '<div class="ai-msg user">' + msg + '</div>';
+    input.value = '';
+    var response = getAIResponse(msg.toLowerCase());
+    setTimeout(function() {
+        messages.innerHTML += '<div class="ai-msg bot">' + response + '</div>';
+        messages.scrollTop = messages.scrollHeight;
+    }, 500);
+    messages.scrollTop = messages.scrollHeight;
+}
+function getAIResponse(q) {
+    if (q.includes('install')) return 'To install: Run PowerShell as Administrator, then execute: powershell -ExecutionPolicy Bypass -File "Windows11FastLight-Setup.ps1" -Silent';
+    if (q.includes('undo') || q.includes('revert')) return 'To undo: Set-Service SysMain -StartupType Automatic; powercfg /h on; Set-ItemProperty HKLM:\\SOFTWARE\\Policies\\Microsoft\\Windows\\DataCollection AllowTelemetry 1';
+    if (q.includes('verify') || q.includes('check')) return 'Verify with: Get-ItemProperty "HKLM:\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\Windows11FastLight" | Select DisplayName, DisplayVersion';
+    if (q.includes('safe')) return 'Yes, all changes are reversible registry and service modifications. No system files are deleted.';
+    if (q.includes('faster') || q.includes('speed')) return 'The update disables telemetry, background apps, unnecessary services, and optimizes visual effects, network, memory, and SSDs for maximum performance.';
+    if (q.includes('disk') || q.includes('space')) return 'Disabling hibernation frees disk space equal to your RAM size. Cleaning temp files typically frees 1-5 GB.';
+    if (q.includes('windows 10')) return 'This update is designed for Windows 11. Some optimizations may work on Windows 10 but are not tested.';
+    if (q.includes('microsoft')) return 'No, this is a community-created update by GoStudios, based on Microsoft official Windows 11 specifications. Not affiliated with Microsoft.';
+    if (q.includes('break')) return 'No, Windows Update services remain enabled. Only unnecessary background services are disabled.';
+    return 'I can help with installation, verification, undoing changes, safety, performance, disk space, and more. What would you like to know?';
+}
+</script>
 </body>
 </html>
+
 
