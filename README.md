@@ -125,3 +125,11 @@ Microsoft's official Windows 11 page: <https://www.microsoft.com/en-us/software-
 ## License
 
 MIT License — Copyright (c) 2026 GoStudios. Windows and Windows 11 are trademarks of Microsoft Corporation.
+
+
+---
+
+## OpenCode
+
+This repository is maintained with [OpenCode](https://opencode.ai).
+Hub: https://gostudios-real.github.io/
